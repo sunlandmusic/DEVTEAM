@@ -20,18 +20,22 @@ export const OpenRouterService = () => {
     fetchCredits();
   }, []);
 
-  const processTeamRequest = async (prompt: string, teamId: TeamId, attachments: FileAttachment[] = [], isPremiumMode: boolean = true) => {
+  const processTeamRequest = async (prompt: string, teamId: TeamId, attachments: FileAttachment[] = [], isPremiumMode: boolean = false) => {
     try {
+      // Create a new AbortController for this request
+      abortController.current = new AbortController();
+
       const response = await fetch(PROXY_URL, {
         method: 'POST',
-        signal: abortController.current?.signal,
+        signal: abortController.current.signal,
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           prompt,
           attachments,
-          isPremiumMode
+          isPremiumMode,
+          teamId
         })
       });
 
@@ -51,13 +55,14 @@ export const OpenRouterService = () => {
         throw new Error(data.error || 'Unknown error from proxy');
       }
 
-      // Update credits (mock)
+      // Update credits based on mode
       setCredits(prev => ({
-        used: prev.used + (isPremiumMode ? 4 : 1),
+        used: prev.used + (isPremiumMode ? 4 : 1), // 4 credits for premium, 1 for economy
         total: prev.total
       }));
 
-      return data.responses;
+      // If in economy mode, only return the first response
+      return isPremiumMode ? data.responses : [data.responses[0]];
     } catch (error: any) {
       if ((error as Error).name === 'AbortError') {
         throw new Error('Request was cancelled');
@@ -76,7 +81,7 @@ export const OpenRouterService = () => {
     }
   };
 
-  const sendPrompt = async (prompt: string, attachments: FileAttachment[], teamId: TeamId, isPremiumMode: boolean = true): Promise<string> => {
+  const sendPrompt = async (prompt: string, attachments: FileAttachment[], teamId: TeamId, isPremiumMode: boolean = false): Promise<string> => {
     const response = await processTeamRequest(prompt, teamId, attachments, isPremiumMode);
     return response.join('\n\n');
   };
@@ -87,4 +92,4 @@ export const OpenRouterService = () => {
     cancelRequests,
     sendPrompt
   };
-}; 
+};

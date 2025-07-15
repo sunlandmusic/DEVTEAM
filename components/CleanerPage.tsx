@@ -549,7 +549,7 @@ const CleanerPage: React.FC = () => {
                 <div className="bg-black rounded-lg p-6 border border-gray-700">
                   <div 
                     className="text-gray-200 whitespace-pre-wrap mb-4"
-                    dangerouslySetInnerHTML={{ __html: cleanerResult }}
+                    dangerouslySetInnerHTML={{ __html: cleanerResult.replace(/^Cleaned Data Result:\s*/g, '') }}
                   />
                   <div className="flex gap-4 mt-2">
                     <button onClick={handleCopy} className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white">

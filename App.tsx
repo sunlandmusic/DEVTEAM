@@ -616,7 +616,7 @@ const App: React.FC = () => {
                   task.prompt,
                   task.attachments || [],
                   task.team,
-                  devTeamIsPremiumMode
+                  devTeamModelMode
                 ),
                 timeoutPromise
               ]) as string;
@@ -650,12 +650,12 @@ const App: React.FC = () => {
           }
           const timestamp = new Date().toISOString();
           const attachmentUrls = attachments.map(att => att.url).filter(Boolean) as string[];
-          openRouterService.sendPrompt(devTeamPrompt, attachments, devTeamSelectedTeams[0], devTeamIsPremiumMode)
+          openRouterService.sendPrompt(devTeamPrompt, attachments, devTeamSelectedTeams[0], devTeamModelMode)
             .then(response => {
               addDevTeamResponse({
                 teamId: devTeamSelectedTeams[0],
                 prompt: devTeamPrompt,
-                response,
+                response: response.replace(/^Aggregated Responses:\s*/g, ''),
                 timestamp,
                 attachments: attachmentUrls
               });

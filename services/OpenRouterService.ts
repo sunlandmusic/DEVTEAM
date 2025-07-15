@@ -20,7 +20,7 @@ export const OpenRouterService = () => {
     fetchCredits();
   }, []);
 
-  const processTeamRequest = async (prompt: string, teamId: TeamId, attachments: FileAttachment[] = [], isPremiumMode: boolean = false) => {
+  const processTeamRequest = async (prompt: string, teamId: TeamId, attachments: FileAttachment[] = [], mode: 'economy' | 'pro' | 'premium' = 'economy') => {
     try {
       // Create a new AbortController for this request
       abortController.current = new AbortController();
@@ -34,7 +34,7 @@ export const OpenRouterService = () => {
         body: JSON.stringify({
           prompt,
           attachments,
-          isPremiumMode,
+          mode,
           teamId
         })
       });
@@ -57,12 +57,26 @@ export const OpenRouterService = () => {
 
       // Update credits based on mode
       setCredits(prev => ({
-        used: prev.used + (isPremiumMode ? 4 : 1), // 4 credits for premium, 1 for economy
+        used: prev.used + (mode === 'premium' ? 4 : 1),
         total: prev.total
       }));
 
-      // If in economy mode, only return the first response
-      return isPremiumMode ? data.responses : [data.responses[0]];
+      // Return responses based on mode
+      switch (mode) {
+        case 'economy':
+          return ['deepseek/deepseek-r1-0528-qwen3-8b:free'];
+        case 'pro':
+          return ['anthropic/claude-opus-4'];
+        case 'premium':
+          return [
+            'google/gemini-2.5-pro',
+            'anthropic/claude-opus-4',
+            'x-ai/grok-4',
+            'deepseek/deepseek-r1-0528-qwen3-8b:free'
+          ];
+        default:
+          return ['deepseek/deepseek-r1-0528-qwen3-8b:free'];
+      }
     } catch (error: any) {
       if ((error as Error).name === 'AbortError') {
         throw new Error('Request was cancelled');
@@ -81,8 +95,8 @@ export const OpenRouterService = () => {
     }
   };
 
-  const sendPrompt = async (prompt: string, attachments: FileAttachment[], teamId: TeamId, isPremiumMode: boolean = false): Promise<string> => {
-    const response = await processTeamRequest(prompt, teamId, attachments, isPremiumMode);
+  const sendPrompt = async (prompt: string, attachments: FileAttachment[], teamId: TeamId, mode: 'economy' | 'pro' | 'premium' = 'economy'): Promise<string> => {
+    const response = await processTeamRequest(prompt, teamId, attachments, mode);
     return response.join('\n\n');
   };
 

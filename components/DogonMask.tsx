@@ -20,7 +20,6 @@ const MaskImage = styled(motion.img)`
   height: 100%;
   object-fit: contain;
   z-index: 1;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
   pointer-events: none;
 `;
 
@@ -31,7 +30,9 @@ export function DogonMask({ isProcessing = false }: DogonMaskProps) {
       scale: [1, 1.02, 1],
       filter: [
         'drop-shadow(0 0 10px rgba(255, 215, 0, 0.3))',
-        'drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))',
+        'drop-shadow(0 0 20px rgba(147, 51, 234, 0.5))',
+        'drop-shadow(0 0 15px rgba(59, 130, 246, 0.4))',
+        'drop-shadow(0 0 20px rgba(239, 68, 68, 0.5))',
         'drop-shadow(0 0 10px rgba(255, 215, 0, 0.3))'
       ],
     } : {}
@@ -46,7 +47,7 @@ export function DogonMask({ isProcessing = false }: DogonMaskProps) {
         animate="animate"
         variants={maskAnimation}
         transition={{
-          duration: 1,
+          duration: 2,
           repeat: Infinity,
           ease: "easeInOut"
         }}

@@ -1065,8 +1065,6 @@ const App: React.FC = () => {
                     </div>
 
                     <div className="w-full">
-                      <h2 className="text-xl font-semibold text-[rgba(255,255,255,0.87)] mb-4">Aggregated Responses:</h2>
-
                       {devTeamResponses.map((tr, index) => (
                         <div key={index}>
                           <TeamHeader>Team {tr.teamId}:</TeamHeader>

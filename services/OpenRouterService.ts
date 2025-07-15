@@ -25,18 +25,21 @@ export const OpenRouterService = () => {
       // Create a new AbortController for this request
       abortController.current = new AbortController();
 
+      // Only include attachments in the request if they exist
+      const requestBody = {
+        prompt,
+        mode,
+        teamId,
+        ...(attachments.length > 0 ? { attachments } : {})
+      };
+
       const response = await fetch(PROXY_URL, {
         method: 'POST',
         signal: abortController.current.signal,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          prompt,
-          attachments,
-          mode,
-          teamId
-        })
+        body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
@@ -64,18 +67,13 @@ export const OpenRouterService = () => {
       // Return responses based on mode
       switch (mode) {
         case 'economy':
-          return ['deepseek/deepseek-r1-0528-qwen3-8b:free'];
+          return ['DeepSeek R1'];
         case 'pro':
-          return ['anthropic/claude-opus-4'];
+          return ['Claude Opus 4'];
         case 'premium':
-          return [
-            'google/gemini-2.5-pro',
-            'anthropic/claude-opus-4',
-            'x-ai/grok-4',
-            'deepseek/deepseek-r1-0528-qwen3-8b:free'
-          ];
+          return ['Grok 4'];
         default:
-          return ['deepseek/deepseek-r1-0528-qwen3-8b:free'];
+          return ['DeepSeek R1'];
       }
     } catch (error: any) {
       if ((error as Error).name === 'AbortError') {

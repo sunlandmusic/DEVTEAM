@@ -13,8 +13,7 @@ import { TeamResponse, AppState, TeamId } from './types';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import styled from 'styled-components';
 import { FileAttachments } from './components/FileAttachments';
-import PreparationPage from './components/PreparationPage';
-import CleanerPage from './components/CleanerPage';
+import { PromptButton } from './components/PromptButton';
 
 // Add Mode Toggle Switch Component
 const ModeToggleContainer = styled.div`
@@ -462,7 +461,7 @@ const App: React.FC = () => {
   const [editTaskIndex, setEditTaskIndex] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
   const [showDevTeamTooltip, setShowDevTeamTooltip] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'preparation' | 'devteam' | 'cleaner'>('devteam');
+  
   // Add state for three modes
   const [devTeamModelMode, setDevTeamModelMode] = useState<'economy' | 'pro' | 'premium'>('economy');
 
@@ -708,207 +707,147 @@ const App: React.FC = () => {
   const isSendEnabled = devTeamPrompt.trim() !== '' && hasTeamsToProcess;
   const isInProcessingMode = processingStatus.processingTeams.length > 0;
 
-  // Navigation component
-  const NavigationTabs = () => (
-    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 0, gap: 8 }}>
-      <button
-        onClick={() => setCurrentPage('preparation')}
-        style={{
-          padding: '8px 16px',
-          background: currentPage === 'preparation' ? '#a855f7' : '#333',
-          color: 'white',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer'
-        }}
-      >
-        PREPARATION
-      </button>
-      <button
-        onClick={() => setCurrentPage('devteam')}
-        style={{
-          padding: '8px 16px',
-          background: currentPage === 'devteam' ? '#a855f7' : '#333',
-          color: 'white',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer'
-        }}
-      >
-        DEV TEAM
-      </button>
-      <button
-        onClick={() => setCurrentPage('cleaner')}
-        style={{
-          padding: '8px 16px',
-          background: currentPage === 'cleaner' ? '#a855f7' : '#333',
-          color: 'white',
-          border: 'none',
-          borderRadius: 6,
-          cursor: 'pointer'
-        }}
-      >
-        CLEANER
-      </button>
-    </div>
-  );
-
   return (
     <>
       <style>{globalStyles}</style>
       <Container>
         <div className="relative w-full min-h-screen">
           <main className="w-full max-w-4xl mx-auto flex flex-col items-center gap-6 z-10">
-            <NavigationTabs />
-            
-            {currentPage === 'preparation' && <PreparationPage />}
-            {currentPage === 'cleaner' && <CleanerPage />}
-            {currentPage === 'devteam' && (
-              <>
-                <div 
-                  className="text-center relative"
-                  onMouseEnter={() => setShowDevTeamTooltip(true)}
-                  onMouseLeave={() => setShowDevTeamTooltip(false)}
-                  style={{ marginTop: '0px', marginBottom: '16px' }}
+            <div 
+              className="text-center relative"
+              onMouseEnter={() => setShowDevTeamTooltip(true)}
+              onMouseLeave={() => setShowDevTeamTooltip(false)}
+              style={{ marginTop: '0px', marginBottom: '16px' }}
+            >
+              <Title>DEV TEAM</Title>
+              <div 
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  fontSize: '14px',
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  marginTop: '8px',
+                  width: 'max-content',
+                  pointerEvents: 'none',
+                }} 
+                className={`dev-team-tooltip ${showDevTeamTooltip ? 'visible' : ''}`}
+              >
+                leveraging the power of {devTeamIsPremiumMode ? '16' : '4'} A.i. models simultaneously
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-8 w-full px-4 max-w-2xl">
+              {teams.map(id => (
+                <SupercomputerIcon
+                  key={id}
+                  teamId={id}
+                  onClick={() => handleTeamSelect(id)}
+                  isSelected={devTeamSelectedTeams.includes(id)}
+                  isCurrentlyProcessing={processingStatus.processingTeams.includes(id)}
+                />
+              ))}
+            </div>
+
+            <div className="flex items-center gap-8 relative">
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <DogonMask isProcessing={processingStatus.processingTeams.length > 0} />
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <PromptButton onSelectPrompt={setDevTeamPrompt} />
+                <button
+                  onClick={() => setDevTeamModelMode('economy')}
+                  style={{
+                    padding: '8px 16px',
+                    background: devTeamModelMode === 'economy' ? '#444' : 'transparent',
+                    color: devTeamModelMode === 'economy' ? '#fff' : '#666',
+                    border: '1px solid #444',
+                    borderRadius: '11px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontSize: '0.875rem',
+                    fontWeight: '500'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (devTeamModelMode !== 'economy') {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.color = '#aaa';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (devTeamModelMode !== 'economy') {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = '#666';
+                    }
+                  }}
                 >
-                  <Title>DEV TEAM</Title>
-                  <div 
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      fontSize: '14px',
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      marginTop: '8px',
-                      width: 'max-content',
-                      pointerEvents: 'none',
-                    }} 
-                    className={`dev-team-tooltip ${showDevTeamTooltip ? 'visible' : ''}`}
-                  >
-                    leveraging the power of {devTeamIsPremiumMode ? '16' : '4'} A.i. models simultaneously
-                  </div>
-                </div>
+                  ECONOMY
+                </button>
+                <button
+                  onClick={() => setDevTeamModelMode('pro')}
+                  style={{
+                    padding: '8px 16px',
+                    background: devTeamModelMode === 'pro' ? '#444' : 'transparent',
+                    color: devTeamModelMode === 'pro' ? '#fff' : '#666',
+                    border: '1px solid #444',
+                    borderRadius: '11px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontSize: '0.875rem',
+                    fontWeight: '500'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (devTeamModelMode !== 'pro') {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.color = '#aaa';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (devTeamModelMode !== 'pro') {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = '#666';
+                    }
+                  }}
+                >
+                  PRO
+                </button>
+                <button
+                  onClick={() => setDevTeamModelMode('premium')}
+                  style={{
+                    padding: '8px 16px',
+                    background: devTeamModelMode === 'premium' ? '#444' : 'transparent',
+                    color: devTeamModelMode === 'premium' ? '#fff' : '#666',
+                    border: '1px solid #444',
+                    borderRadius: '11px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    fontSize: '0.875rem',
+                    fontWeight: '500'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (devTeamModelMode !== 'premium') {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.color = '#aaa';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (devTeamModelMode !== 'premium') {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.color = '#666';
+                    }
+                  }}
+                >
+                  PREMIUM
+                </button>
+              </div>
+            </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-8 w-full px-4 max-w-2xl">
-                  {teams.map(id => (
-                    <SupercomputerIcon
-                      key={id}
-                      teamId={id}
-                      onClick={() => handleTeamSelect(id)}
-                      isSelected={devTeamSelectedTeams.includes(id)}
-                      isCurrentlyProcessing={processingStatus.processingTeams.includes(id)}
-                    />
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-8 relative">
-                  <div style={{ position: 'relative', zIndex: 2 }}>
-                    <DogonMask isProcessing={processingStatus.processingTeams.length > 0} />
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
-                  <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
-                    {devTeamModelMode === 'economy' && 'DEEPSEEK R1 (x4)'}
-                    {devTeamModelMode === 'pro' && 'Claude Opus 4 (x4)'}
-                    {devTeamModelMode === 'premium' && (
-                      <>
-                        <div>GEMINI 2.5 PRO - CLAUDE OPUS 4</div>
-                        <div>GROK 4 - DEEPSEEK R1 (x4)</div>
-                      </>
-                    )}
-                  </div>
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <button
-                      onClick={() => setDevTeamModelMode('economy')}
-                      style={{
-                        padding: '8px 16px',
-                        background: devTeamModelMode === 'economy' ? '#444' : 'transparent',
-                        color: devTeamModelMode === 'economy' ? '#fff' : '#666',
-                        border: '1px solid #444',
-                        borderRadius: '11px',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem',
-                        fontWeight: '500'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (devTeamModelMode !== 'economy') {
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                          e.currentTarget.style.color = '#aaa';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (devTeamModelMode !== 'economy') {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = '#666';
-                        }
-                      }}
-                    >
-                      ECONOMY
-                    </button>
-                    <button
-                      onClick={() => setDevTeamModelMode('pro')}
-                      style={{
-                        padding: '8px 16px',
-                        background: devTeamModelMode === 'pro' ? '#444' : 'transparent',
-                        color: devTeamModelMode === 'pro' ? '#fff' : '#666',
-                        border: '1px solid #444',
-                        borderRadius: '11px',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem',
-                        fontWeight: '500'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (devTeamModelMode !== 'pro') {
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                          e.currentTarget.style.color = '#aaa';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (devTeamModelMode !== 'pro') {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = '#666';
-                        }
-                      }}
-                    >
-                      PRO
-                    </button>
-                    <button
-                      onClick={() => setDevTeamModelMode('premium')}
-                      style={{
-                        padding: '8px 16px',
-                        background: devTeamModelMode === 'premium' ? '#444' : 'transparent',
-                        color: devTeamModelMode === 'premium' ? '#fff' : '#666',
-                        border: '1px solid #444',
-                        borderRadius: '11px',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        fontSize: '0.875rem',
-                        fontWeight: '500'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (devTeamModelMode !== 'premium') {
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                          e.currentTarget.style.color = '#aaa';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (devTeamModelMode !== 'premium') {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = '#666';
-                        }
-                      }}
-                    >
-                      PREMIUM
-                    </button>
-                  </div>
-                </div>
-
-                <div className="w-full flex flex-col items-center gap-0 relative" style={{ marginTop: '0px' }}>
-                  <InputContainer className={devTeamResponses.length > 0 ? 'has-responses' : ''} style={{ gap: 0, marginBottom: 0, width: '100%', maxWidth: '36rem' }}>
-                    <div style={{ margin: 0, padding: 0, width: '100%' }}>
+            <div className="w-full flex flex-col items-center gap-0 relative" style={{ marginTop: '0px' }}>
+              <InputContainer className={devTeamResponses.length > 0 ? 'has-responses' : ''} style={{ gap: 0, marginBottom: 0, width: '100%', maxWidth: '36rem' }}>
+                <div style={{ margin: 0, padding: 0, width: '100%' }}>
           <TextInputArea
                         value={devTeamPrompt}
                         onChange={setDevTeamPrompt}
@@ -1074,13 +1013,11 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 )}
-              </>
-            )}
-          </main>
-        </div>
-      </Container>
-    </>
-  );
-};
+              </main>
+            </div>
+          </Container>
+        </>
+      );
+    };
 
-export default App;
+    export default App;

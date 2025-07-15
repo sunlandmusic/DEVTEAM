@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEV TEAM AI Orchestration System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif; /* A common sans-serif font */
+      background-color: #000000; /* Changed to black */
+    }
+    /* Supercomputer slot animation */
+    @keyframes neonPulse {
+      0%, 100% { background-color: #A855F7; box-shadow: 0 0 6px #A855F7, 0 0 12px #A855F7, 0 0 18px #A855F7; }
+      16% { background-color: #F97316; box-shadow: 0 0 6px #F97316, 0 0 12px #F97316, 0 0 18px #F97316; }
+      32% { background-color: #FACC15; box-shadow: 0 0 6px #FACC15, 0 0 12px #FACC15, 0 0 18px #FACC15; }
+      48% { background-color: #EC4899; box-shadow: 0 0 6px #EC4899, 0 0 12px #EC4899, 0 0 18px #EC4899; } /* Pink */
+      64% { background-color: #D946EF; box-shadow: 0 0 6px #D946EF, 0 0 12px #D946EF, 0 0 18px #D946EF; } /* Fuchsia */
+      80% { background-color: #8B5CF6; box-shadow: 0 0 6px #8B5CF6, 0 0 12px #8B5CF6, 0 0 18px #8B5CF6; } /* Violet */
+    }
+
+    .slot-animating {
+      animation: neonPulse 1.5s infinite ease-in-out;
+    }
+
+    /* Dogon mask eye animation */
+    @keyframes dogonEyePulse {
+      0%, 100% { 
+        background-color: rgba(255, 215, 0, 0.7); /* Gold */
+        box-shadow: 0 0 10px rgba(255, 215, 0, 1), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+        transform: scale(1);
+      }
+      50% { 
+        background-color: rgba(168, 85, 247, 0.8);  /* Purple */
+        box-shadow: 0 0 15px rgba(168, 85, 247, 1), 0 0 25px rgba(168, 85, 247, 0.8), 0 0 35px rgba(168, 85, 247, 0.6);
+        transform: scale(1.1);
+      }
+    }
+    .dogon-eye-animating {
+      animation: dogonEyePulse 2s infinite ease-in-out;
+    }
+    
+    /* Team selected glow for supercomputer base */
+    @keyframes teamSelectedGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 35px rgba(168, 85, 247, 0.4), inset 0 0 10px rgba(168, 85, 247, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(168, 85, 247, 0.8), 0 0 50px rgba(168, 85, 247, 0.5), inset 0 0 15px rgba(168, 85, 247, 0.4); }
+    }
+    .team-selected-glow-active {
+        animation: teamSelectedGlow 2.5s infinite ease-in-out;
+    }
+
+    /* DEV TEAM title hover text */
+    .dev-team-title-container .dev-team-title-hover-text {
+      visibility: hidden;
+      opacity: 0;
+      /* Slower fade in/out: increased duration from 0.5s to 1.5s */
+      transition: opacity 1.5s ease-in-out, visibility 0s linear 1.5s; 
+      pointer-events: none;
+    }
+    .dev-team-title-container:hover .dev-team-title-hover-text {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+
+    /* Custom scrollbar for textarea */
+    textarea::-webkit-scrollbar {
+      width: 8px;
+    }
+    textarea::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    textarea::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.6); /* Purple accent */
+      border-radius: 4px;
+    }
+    textarea::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.8);
+    }
+    textarea {
+      resize: vertical; /* Allow vertical resize, hide default browser handle if possible or accept it */
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.6.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

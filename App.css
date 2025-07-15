@@ -1,0 +1,36 @@
+.dev-team-tooltip {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  white-space: nowrap;
+}
+
+.dev-team-tooltip.visible {
+  opacity: 1;
+}
+
+@keyframes neonPulse {
+  0% {
+    background: #7F00FF;
+    box-shadow: 0 0 5px #7F00FF, 0 0 10px #7F00FF, 0 0 15px #7F00FF;
+  }
+  50% {
+    background: #9933FF;
+    box-shadow: 0 0 10px #9933FF, 0 0 20px #9933FF, 0 0 30px #9933FF;
+  }
+  100% {
+    background: #7F00FF;
+    box-shadow: 0 0 5px #7F00FF, 0 0 10px #7F00FF, 0 0 15px #7F00FF;
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+} 

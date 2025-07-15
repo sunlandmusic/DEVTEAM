@@ -90,7 +90,9 @@ export default async function handler(req) {
 
     // Format responses
     const formattedResponses = responses.map(r => 
-      `\n\n\n\n<span style="color: #a855f7; font-weight: bold;">${r.model}</span>\n\n\n\n${r.content}`
+      isPremiumMode ? 
+        `\n\n\n\n<span style="color: #a855f7; font-weight: bold;">${r.model}</span>\n\n\n\n${r.content}` :
+        r.content
     );
 
     return new Response(JSON.stringify({

@@ -430,6 +430,7 @@ const PreparationPage: React.FC = () => {
   const [prompt, setPrompt] = useState('');
   const [isPremiumMode, setIsPremiumMode] = useState(false);
   const [showPreparationTooltip, setShowPreparationTooltip] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const openRouterService = OpenRouterService();
   const { attachments, preparationResult, setPreparationResult, clearPreparationResult, preparationProcessing, setPreparationProcessing } = useAutomationStore();
 
@@ -454,7 +455,11 @@ const PreparationPage: React.FC = () => {
   };
 
   const handleCopy = async () => {
-    if (preparationResult) await navigator.clipboard.writeText(preparationResult);
+    if (preparationResult) {
+      await navigator.clipboard.writeText(preparationResult);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    }
   };
   const handleExport = () => {
     if (preparationResult) {
@@ -541,14 +546,15 @@ const PreparationPage: React.FC = () => {
             </InputContainer>
             {preparationResult && (
               <div className="w-full max-w-4xl mx-auto mt-6">
-                <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                  <h3 className="text-lg font-semibold mb-4 text-white">Preparation Result:</h3>
+                <div className="bg-black rounded-lg p-6 border border-gray-700">
                   <div 
                     className="text-gray-200 whitespace-pre-wrap mb-4"
                     dangerouslySetInnerHTML={{ __html: preparationResult }}
                   />
                   <div className="flex gap-4 mt-2">
-                    <button onClick={handleCopy} className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white">Copy</button>
+                    <button onClick={handleCopy} className="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white">
+                      {isCopied ? 'Copied!' : 'Copy'}
+                    </button>
                     <button onClick={handleExport} className="px-4 py-2 rounded bg-purple-700 hover:bg-purple-600 text-white">Export</button>
                     <button onClick={handleClear} className="px-4 py-2 rounded bg-blue-900 hover:bg-blue-800 text-white">Clear</button>
                   </div>

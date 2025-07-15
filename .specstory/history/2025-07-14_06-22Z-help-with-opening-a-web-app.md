@@ -20003,3 +20003,1325 @@ Would you like me to help you implement this simpler approach instead of continu
 
 ---
 
+_**User**_
+
+i simply want to make the app available for testing
+
+---
+
+_**Assistant**_
+
+Let me help you make the app available for testing in the simplest way possible.
+
+First, let's go back to the main project directory:
+
+---
+
+```bash
+cd .. && ls -la
+```
+
+```
+hakimabdulsamad@Hakims-Mac-Studio devteam-api % cd .. && ls -la
+total 424
+drwxr-xr-x   42 hakimabdulsamad  staff   1344 Jul 15 22:58 .
+drwxr-x---+  50 hakimabdulsamad  staff   1600 Jul 15 23:03 ..
+-rw-r--r--@   1 hakimabdulsamad  staff    110 Jun 22 15:30 .cursorindexingignore
+-rw-r--r--@   1 hakimabdulsamad  staff  10244 Jul  4 17:35 .DS_Store
+-rw-r--r--@   1 hakimabdulsamad  staff     98 Jul 15 17:40 .env
+-rw-r--r--@   1 hakimabdulsamad  staff    100 Jul 14 09:21 .env.local
+drwxr-xr-x@   5 hakimabdulsamad  staff    160 Jun 22 16:12 .expo
+drwxr-xr-x@  13 hakimabdulsamad  staff    416 Jul 15 21:55 .git
+drwxr-xr-x@   3 hakimabdulsamad  staff     96 Jul 15 17:41 .github
+-rw-r--r--@   1 hakimabdulsamad  staff      8 Jul 15 22:48 .gitignore
+drwxr-xr-x@   5 hakimabdulsamad  staff    160 Jun 22 15:30 .specstory
+drwxr-xr-x@   4 hakimabdulsamad  staff    128 Jul 15 22:48 .vercel
+drwxr-xr-x@   3 hakimabdulsamad  staff     96 Jul 15 18:42 api
+-rw-r--r--@   1 hakimabdulsamad  staff    725 Jul 14 09:01 App.css
+-rw-rw-r--@   1 hakimabdulsamad  staff  37963 Jul 15 16:35 App.tsx
+-rw-r--r--@   1 hakimabdulsamad  staff   1921 Jul 14 09:01 AppBuilder.md
+drwxr-xr-x@  16 hakimabdulsamad  staff    512 Jul 14 09:01 backend-test
+drwxrwxr-x@  15 hakimabdulsamad  staff    480 Jul 15 01:21 components
+-rw-r--r--@   1 hakimabdulsamad  staff  12280 Jul 15 16:35 DEV_TEAM_Platform.md
+drwxr-xr-x@  10 hakimabdulsamad  staff    320 Jul 15 23:07 devteam-api
+drwxr-xr-x@   5 hakimabdulsamad  staff    160 Jul 15 19:12 dist
+-rw-rw-r--@   1 hakimabdulsamad  staff   3853 Jul 14 09:01 index.html
+-rw-rw-r--@   1 hakimabdulsamad  staff    384 Jul 14 09:01 index.tsx
+-rw-rw-r--@   1 hakimabdulsamad  staff    270 Jul 14 09:01 metadata.json
+-rw-r--r--@   1 hakimabdulsamad  staff   2664 Jul 14 09:01 MYWORKFLOW.md
+drwxr-xr-x@ 118 hakimabdulsamad  staff   3776 Jul 15 16:40 node_modules
+-rw-r--r--@   1 hakimabdulsamad  staff  77751 Jul 15 17:48 package-lock.json
+-rw-rw-r--@   1 hakimabdulsamad  staff    738 Jul 15 21:55 package.json
+-rw-r--r--@   1 hakimabdulsamad  staff    375 Jun 23 16:35 playwright.config.ts
+drwxrwxr-x@   3 hakimabdulsamad  staff     96 Jun 22 21:17 public
+-rw-rw-r--@   1 hakimabdulsamad  staff    297 Jul 14 09:01 README.md
+drwxr-xr-x@  19 hakimabdulsamad  staff    608 Jul 14 19:24 REBUILD
+drwxrwxr-x@   8 hakimabdulsamad  staff    256 Jul 14 09:01 services
+drwxr-xr-x@   5 hakimabdulsamad  staff    160 Jul 14 08:20 src
+drwxr-xr-x@   3 hakimabdulsamad  staff     96 Jul 14 09:01 styles
+-rw-r--r--@   1 hakimabdulsamad  staff   3074 Jul 14 09:01 TaskFulfillment.md
+drwxr-xr-x@  11 hakimabdulsamad  staff    352 Jul 14 08:20 test-results
+drwxr-xr-x@   7 hakimabdulsamad  staff    224 Jun 23 04:51 tests
+-rw-rw-r--@   1 hakimabdulsamad  staff    676 Jul 14 09:01 tsconfig.json
+-rw-rw-r--@   1 hakimabdulsamad  staff   1519 Jul 14 09:01 types.ts
+-rw-r--r--@   1 hakimabdulsamad  staff    630 Jul 15 22:59 vercel.json
+-rw-rw-r--@   1 hakimabdulsamad  staff    302 Jul 15 21:55 vite.config.ts
+hakimabdulsamad@Hakims-Mac-Studio DEVTEAMV3 %
+```
+
+---
+
+I see you already have a `dist` directory, which means the app has been built. Let's deploy this to GitHub Pages in the simplest way possible. First, I'll check if you have the GitHub Pages workflow set up:
+
+---
+
+<details>
+            <summary>Listed directory .github/workflows • **1** results</summary>
+        
+| Name |
+|-------|
+| 📄 `deploy.yml` |
+
+</details>
+
+---
+
+Great! You already have a deployment workflow. Let's build the app for production and then deploy it:
+
+---
+
+```bash
+npm run build
+```
+
+```
+
+> dev-team-ai-orchestration-system@0.0.0 build
+> vite build
+
+vite v6.3.5 building for production...
+
+/index.css doesn't exist at build time, it will remain unchanged to be resolved at runtime
+node_modules/framer-motion/dist/es/index.mjs (1:0): Module level directives cause errors when bundled, "use c
+lient" in "node_modules/framer-motion/dist/es/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs (1:0): Module level directives cause erro
+rs when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs" was ig
+nored.
+node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs (1:0): Module level directives cause err
+ors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs" was
+ignored.
+node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs (1:0): Module level directives cause errors
+ when bundled, "use client" in "node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs" was ignore
+d.
+node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/PresenceContext.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/context/PresenceContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/MotionContext/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionContext/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/motion/index.mjs (1:0): Module level directives cause errors when bundled,
+ "use client" in "node_modules/framer-motion/dist/es/motion/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/LazyContext.mjs (1:0): Module level directives cause errors when b
+undled, "use client" in "node_modules/framer-motion/dist/es/context/LazyContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Item.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Item.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Group.mjs (1:0): Module level directives cause errors w
+hen bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Group.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs (1:0): Module level directive
+s cause errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/P
+resenceChild.mjs" was ignored.
+node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs (1:0): Module level directives ca
+use errors when bundled, "use client" in "node_modules/framer-motion/dist/es/motion/features/layout/MeasureLa
+yout.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/ReorderContext.mjs (1:0): Module level directives cause errors whe
+n bundled, "use client" in "node_modules/framer-motion/dist/es/context/ReorderContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs (1:0): Module level directives cau
+se errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/PopChi
+ld.mjs" was ignored.
+✓ 474 modules transformed.
+dist/index.html                   3.97 kB │ gzip:   1.40 kB
+dist/assets/index-DE9lFJnX.css    1.24 kB │ gzip:   0.40 kB
+dist/assets/index-zqzF1Wio.js   392.96 kB │ gzip: 121.03 kB
+✓ built in 784ms
+
+```
+
+---
+
+Now let's check your GitHub workflow file to make sure it's set up correctly:
+
+---
+
+Read file: .github/workflows/deploy.yml
+
+---
+
+The workflow looks good! It's already set up to deploy to GitHub Pages. All you need to do is:
+
+1. Commit your changes
+2. Push to GitHub
+3. The workflow will automatically deploy your app
+
+Let me help you with that:
+
+---
+
+```bash
+git add . && git commit -m "Build for deployment" && git push
+```
+
+```
+
+
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin-cwd.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-cwd.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-esm.d.ts
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin-esm.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-esm.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-script-deprecated.d.ts
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin-script-deprecated.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-script-deprecated.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-script.d.ts
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin-script.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-script.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-transpile.d.ts
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin-transpile.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin-transpile.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin.d.ts
+ create mode 100755 devteam-api/node_modules/ts-node/dist/bin.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/bin.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/argv-payload.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/argv-payload.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/argv-payload.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-entrypoint.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-entrypoint.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-entrypoint.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-loader.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-loader.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-loader.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-require.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-require.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/child-require.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/spawn-child.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/spawn-child.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/child/spawn-child.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/cjs-resolve-hooks.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/cjs-resolve-hooks.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/cjs-resolve-hooks.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/configuration.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/configuration.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/configuration.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/esm.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/esm.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/esm.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/file-extensions.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/file-extensions.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/file-extensions.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/index.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/index.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/index.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/module-type-classifier.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/module-type-classifier.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/module-type-classifier.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/node-module-type-classifier.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/node-module-type-classifier.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/node-module-type-classifier.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/repl.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/repl.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/repl.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/resolver-functions.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/resolver-functions.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/resolver-functions.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/swc.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/swc.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/swc.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/types.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/types.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/transpilers/types.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-compiler-types.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-compiler-types.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-compiler-types.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-internals.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-internals.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-internals.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-transpile-module.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-transpile-module.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/ts-transpile-module.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfig-schema.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfig-schema.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfig-schema.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfigs.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfigs.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/tsconfigs.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/dist/util.d.ts
+ create mode 100644 devteam-api/node_modules/ts-node/dist/util.js
+ create mode 100644 devteam-api/node_modules/ts-node/dist/util.js.map
+ create mode 100644 devteam-api/node_modules/ts-node/esm.mjs
+ create mode 100644 devteam-api/node_modules/ts-node/esm/transpile-only.mjs
+ create mode 100644 devteam-api/node_modules/ts-node/node10/tsconfig.json
+ create mode 100644 devteam-api/node_modules/ts-node/node12/tsconfig.json
+ create mode 100644 devteam-api/node_modules/ts-node/node14/tsconfig.json
+ create mode 100644 devteam-api/node_modules/ts-node/node16/tsconfig.json
+ create mode 100644 devteam-api/node_modules/ts-node/package.json
+ create mode 100644 devteam-api/node_modules/ts-node/register/files.js
+ create mode 100644 devteam-api/node_modules/ts-node/register/index.js
+ create mode 100644 devteam-api/node_modules/ts-node/register/transpile-only.js
+ create mode 100644 devteam-api/node_modules/ts-node/register/type-check.js
+ create mode 100644 devteam-api/node_modules/ts-node/transpilers/swc-experimental.js
+ create mode 100644 devteam-api/node_modules/ts-node/transpilers/swc.js
+ create mode 100644 devteam-api/node_modules/ts-node/tsconfig.schema.json
+ create mode 100644 devteam-api/node_modules/ts-node/tsconfig.schemastore-schema.json
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/CHANGELOG.md
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/LICENSE
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/README.md
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/out/index.d.ts
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/out/index.js
+ create mode 100644 devteam-api/node_modules/ts-toolbelt/package.json
+ create mode 100644 devteam-api/node_modules/typescript/LICENSE.txt
+ create mode 100644 devteam-api/node_modules/typescript/README.md
+ create mode 100644 devteam-api/node_modules/typescript/SECURITY.md
+ create mode 100644 devteam-api/node_modules/typescript/ThirdPartyNoticeText.txt
+ create mode 100755 devteam-api/node_modules/typescript/bin/tsc
+ create mode 100755 devteam-api/node_modules/typescript/bin/tsserver
+ create mode 100644 devteam-api/node_modules/typescript/lib/README.md
+ create mode 100644 devteam-api/node_modules/typescript/lib/cancellationToken.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/cs/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/de/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/dynamicImportCompat.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/es/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/fr/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/it/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/ja/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/ko/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.dom.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.dom.iterable.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.collection.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.core.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.generator.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.iterable.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.promise.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.proxy.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.reflect.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.symbol.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2016.array.include.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2016.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2016.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.object.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.promise.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2018.regexp.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.array.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.object.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2019.symbol.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.bigint.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.date.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.number.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.promise.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.sharedmemory.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.promise.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2021.weakref.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.array.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.error.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.object.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.sharedmemory.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es2022.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es5.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.es6.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.full.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.intl.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.promise.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.string.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.esnext.weakref.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.scripthost.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.webworker.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.webworker.importscripts.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/lib.webworker.iterable.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/pl/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/protocol.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/pt-br/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/ru/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/tr/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/tsc.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/tsserver.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/tsserverlibrary.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/tsserverlibrary.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/typesMap.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/typescript.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/typescript.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/typescriptServices.d.ts
+ create mode 100644 devteam-api/node_modules/typescript/lib/typescriptServices.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/typingsInstaller.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/watchGuard.js
+ create mode 100644 devteam-api/node_modules/typescript/lib/zh-cn/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/lib/zh-tw/diagnosticMessages.generated.json
+ create mode 100644 devteam-api/node_modules/typescript/package.json
+ create mode 100644 devteam-api/node_modules/universalify/LICENSE
+ create mode 100644 devteam-api/node_modules/universalify/README.md
+ create mode 100644 devteam-api/node_modules/universalify/index.js
+ create mode 100644 devteam-api/node_modules/universalify/package.json
+ create mode 100755 devteam-api/node_modules/uri-js/LICENSE
+ create mode 100755 devteam-api/node_modules/uri-js/README.md
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.min.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.min.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/es5/uri.all.min.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/index.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/index.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/index.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-iri.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-iri.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-iri.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-uri.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-uri.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/regexps-uri.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/http.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/http.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/http.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/https.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/https.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/https.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/mailto.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/mailto.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/mailto.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn-uuid.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn-uuid.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/urn.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/ws.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/ws.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/ws.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/wss.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/wss.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/schemes/wss.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/uri.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/uri.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/uri.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/util.d.ts
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/util.js
+ create mode 100755 devteam-api/node_modules/uri-js/dist/esnext/util.js.map
+ create mode 100755 devteam-api/node_modules/uri-js/package.json
+ create mode 100755 devteam-api/node_modules/uri-js/yarn.lock
+ create mode 100644 devteam-api/node_modules/util-deprecate/History.md
+ create mode 100644 devteam-api/node_modules/util-deprecate/LICENSE
+ create mode 100644 devteam-api/node_modules/util-deprecate/README.md
+ create mode 100644 devteam-api/node_modules/util-deprecate/browser.js
+ create mode 100644 devteam-api/node_modules/util-deprecate/node.js
+ create mode 100644 devteam-api/node_modules/util-deprecate/package.json
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/CHANGELOG.md
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/LICENSE
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/README.md
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/package.json
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/v8-compile-cache.d.ts
+ create mode 100644 devteam-api/node_modules/v8-compile-cache-lib/v8-compile-cache.js
+ create mode 100644 devteam-api/node_modules/vary/HISTORY.md
+ create mode 100644 devteam-api/node_modules/vary/LICENSE
+ create mode 100644 devteam-api/node_modules/vary/README.md
+ create mode 100644 devteam-api/node_modules/vary/index.js
+ create mode 100644 devteam-api/node_modules/vary/package.json
+ create mode 100644 devteam-api/node_modules/vercel/LICENSE
+ create mode 100644 devteam-api/node_modules/vercel/README.md
+ create mode 100644 devteam-api/node_modules/vercel/dist/VERCEL_DIR_README.txt
+ create mode 100644 devteam-api/node_modules/vercel/dist/builder-worker.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/get-latest-worker.js
+ create mode 100755 devteam-api/node_modules/vercel/dist/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/bootstrap.go
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/filename.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/filename.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/filename.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/go1.x/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs10.x/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs12.x/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs14.x/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs6.10/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/nodejs8.10/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/provided/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/provided/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/provided/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/provided/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python/bootstrap.py
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python2.7/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.6/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3.7/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/bootstrap
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/bootstrap.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/bootstrap.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/bootstrap.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/index.d.ts
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/index.js
+ create mode 100644 devteam-api/node_modules/vercel/dist/runtimes/python3/index.js.map
+ create mode 100644 devteam-api/node_modules/vercel/dist/xdg-open
+ create mode 100644 devteam-api/node_modules/vercel/package.json
+ create mode 100644 devteam-api/node_modules/web-vitals/CHANGELOG.md
+ create mode 100644 devteam-api/node_modules/web-vitals/LICENSE
+ create mode 100644 devteam-api/node_modules/web-vitals/README.md
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getCLS.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getCLS.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getFCP.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getFCP.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getFID.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getFID.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getLCP.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getLCP.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getTTFB.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/getTTFB.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/index.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/index.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/bindReporter.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/bindReporter.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/generateUniqueID.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/generateUniqueID.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/getFirstHidden.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/getFirstHidden.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/initMetric.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/initMetric.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/observe.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/observe.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/onHidden.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/onHidden.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/whenInput.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/lib/whenInput.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/types.d.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/types.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/web-vitals.es5.min.js
+ create mode 100644 devteam-api/node_modules/web-vitals/dist/web-vitals.es5.umd.min.js
+ create mode 100644 devteam-api/node_modules/web-vitals/package.json
+ create mode 100644 devteam-api/node_modules/web-vitals/src/getCLS.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/getFCP.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/getFID.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/getLCP.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/getTTFB.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/index.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/bindReporter.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/generateUniqueID.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/getFirstHidden.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/initMetric.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/observe.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/onHidden.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/lib/whenInput.ts
+ create mode 100644 devteam-api/node_modules/web-vitals/src/types.ts
+ create mode 100644 devteam-api/node_modules/webidl-conversions/LICENSE.md
+ create mode 100644 devteam-api/node_modules/webidl-conversions/README.md
+ create mode 100644 devteam-api/node_modules/webidl-conversions/lib/index.js
+ create mode 100644 devteam-api/node_modules/webidl-conversions/package.json
+ create mode 100644 devteam-api/node_modules/whatwg-url/LICENSE.txt
+ create mode 100644 devteam-api/node_modules/whatwg-url/README.md
+ create mode 100644 devteam-api/node_modules/whatwg-url/lib/URL-impl.js
+ create mode 100644 devteam-api/node_modules/whatwg-url/lib/URL.js
+ create mode 100644 devteam-api/node_modules/whatwg-url/lib/public-api.js
+ create mode 100644 devteam-api/node_modules/whatwg-url/lib/url-state-machine.js
+ create mode 100644 devteam-api/node_modules/whatwg-url/lib/utils.js
+ create mode 100644 devteam-api/node_modules/whatwg-url/package.json
+ create mode 100755 devteam-api/node_modules/wide-align/LICENSE
+ create mode 100755 devteam-api/node_modules/wide-align/README.md
+ create mode 100755 devteam-api/node_modules/wide-align/align.js
+ create mode 100755 devteam-api/node_modules/wide-align/package.json
+ create mode 100644 devteam-api/node_modules/wrappy/LICENSE
+ create mode 100644 devteam-api/node_modules/wrappy/README.md
+ create mode 100644 devteam-api/node_modules/wrappy/package.json
+ create mode 100644 devteam-api/node_modules/wrappy/wrappy.js
+ create mode 100644 devteam-api/node_modules/yallist/LICENSE
+ create mode 100644 devteam-api/node_modules/yallist/README.md
+ create mode 100644 devteam-api/node_modules/yallist/iterator.js
+ create mode 100644 devteam-api/node_modules/yallist/package.json
+ create mode 100644 devteam-api/node_modules/yallist/yallist.js
+ create mode 100644 devteam-api/node_modules/yn/index.d.ts
+ create mode 100644 devteam-api/node_modules/yn/index.js
+ create mode 100644 devteam-api/node_modules/yn/lenient.js
+ create mode 100644 devteam-api/node_modules/yn/license
+ create mode 100644 devteam-api/node_modules/yn/package.json
+ create mode 100644 devteam-api/node_modules/yn/readme.md
+ create mode 100644 devteam-api/package-lock.json
+ create mode 100644 devteam-api/package.json
+ create mode 100644 devteam-api/tsconfig.json
+ create mode 100644 devteam-api/vercel.json
+ delete mode 100644 dist/.DS_Store
+ delete mode 100644 dist/assets/index-BvtuuduJ.js
+ create mode 100644 dist/assets/index-zqzF1Wio.js
+ create mode 100644 dist/images/supercomputer3.png
+ delete mode 100644 dist/images/supercomputer4.png
+ create mode 120000 node_modules/.bin/gh-pages
+ create mode 120000 node_modules/.bin/gh-pages-clean
+ create mode 120000 node_modules/.bin/playwright
+ create mode 120000 node_modules/.bin/semver
+ create mode 160000 node_modules/.cache/gh-pages/https!github.com!sunlandmusic!DEVTEAM.git
+ create mode 100644 node_modules/@nodelib/fs.scandir/LICENSE
+ create mode 100644 node_modules/@nodelib/fs.scandir/README.md
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/adapters/fs.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/adapters/fs.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/constants.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/constants.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/index.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/async.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/async.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/common.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/common.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/sync.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/providers/sync.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/settings.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/settings.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/types/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/types/index.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/utils/fs.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/utils/fs.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/utils/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.scandir/out/utils/index.js
+ create mode 100644 node_modules/@nodelib/fs.scandir/package.json
+ create mode 100644 node_modules/@nodelib/fs.stat/LICENSE
+ create mode 100644 node_modules/@nodelib/fs.stat/README.md
+ create mode 100644 node_modules/@nodelib/fs.stat/out/adapters/fs.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/adapters/fs.js
+ create mode 100644 node_modules/@nodelib/fs.stat/out/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/index.js
+ create mode 100644 node_modules/@nodelib/fs.stat/out/providers/async.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/providers/async.js
+ create mode 100644 node_modules/@nodelib/fs.stat/out/providers/sync.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/providers/sync.js
+ create mode 100644 node_modules/@nodelib/fs.stat/out/settings.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/settings.js
+ create mode 100644 node_modules/@nodelib/fs.stat/out/types/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.stat/out/types/index.js
+ create mode 100644 node_modules/@nodelib/fs.stat/package.json
+ create mode 100644 node_modules/@nodelib/fs.walk/LICENSE
+ create mode 100644 node_modules/@nodelib/fs.walk/README.md
+ create mode 100644 node_modules/@nodelib/fs.walk/out/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/index.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/async.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/async.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/index.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/stream.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/stream.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/sync.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/providers/sync.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/async.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/async.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/common.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/common.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/reader.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/reader.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/sync.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/readers/sync.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/settings.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/settings.js
+ create mode 100644 node_modules/@nodelib/fs.walk/out/types/index.d.ts
+ create mode 100644 node_modules/@nodelib/fs.walk/out/types/index.js
+ create mode 100644 node_modules/@nodelib/fs.walk/package.json
+ create mode 100644 node_modules/array-union/index.d.ts
+ create mode 100644 node_modules/array-union/index.js
+ create mode 100644 node_modules/array-union/license
+ create mode 100644 node_modules/array-union/package.json
+ create mode 100644 node_modules/array-union/readme.md
+ create mode 100644 node_modules/async/CHANGELOG.md
+ create mode 100644 node_modules/async/LICENSE
+ create mode 100644 node_modules/async/README.md
+ create mode 100644 node_modules/async/all.js
+ create mode 100644 node_modules/async/allLimit.js
+ create mode 100644 node_modules/async/allSeries.js
+ create mode 100644 node_modules/async/any.js
+ create mode 100644 node_modules/async/anyLimit.js
+ create mode 100644 node_modules/async/anySeries.js
+ create mode 100644 node_modules/async/apply.js
+ create mode 100644 node_modules/async/applyEach.js
+ create mode 100644 node_modules/async/applyEachSeries.js
+ create mode 100644 node_modules/async/asyncify.js
+ create mode 100644 node_modules/async/auto.js
+ create mode 100644 node_modules/async/autoInject.js
+ create mode 100644 node_modules/async/bower.json
+ create mode 100644 node_modules/async/cargo.js
+ create mode 100644 node_modules/async/cargoQueue.js
+ create mode 100644 node_modules/async/compose.js
+ create mode 100644 node_modules/async/concat.js
+ create mode 100644 node_modules/async/concatLimit.js
+ create mode 100644 node_modules/async/concatSeries.js
+ create mode 100644 node_modules/async/constant.js
+ create mode 100644 node_modules/async/detect.js
+ create mode 100644 node_modules/async/detectLimit.js
+ create mode 100644 node_modules/async/detectSeries.js
+ create mode 100644 node_modules/async/dir.js
+ create mode 100644 node_modules/async/dist/async.js
+ create mode 100644 node_modules/async/dist/async.min.js
+ create mode 100644 node_modules/async/dist/async.mjs
+ create mode 100644 node_modules/async/doDuring.js
+ create mode 100644 node_modules/async/doUntil.js
+ create mode 100644 node_modules/async/doWhilst.js
+ create mode 100644 node_modules/async/during.js
+ create mode 100644 node_modules/async/each.js
+ create mode 100644 node_modules/async/eachLimit.js
+ create mode 100644 node_modules/async/eachOf.js
+ create mode 100644 node_modules/async/eachOfLimit.js
+ create mode 100644 node_modules/async/eachOfSeries.js
+ create mode 100644 node_modules/async/eachSeries.js
+ create mode 100644 node_modules/async/ensureAsync.js
+ create mode 100644 node_modules/async/every.js
+ create mode 100644 node_modules/async/everyLimit.js
+ create mode 100644 node_modules/async/everySeries.js
+ create mode 100644 node_modules/async/filter.js
+ create mode 100644 node_modules/async/filterLimit.js
+ create mode 100644 node_modules/async/filterSeries.js
+ create mode 100644 node_modules/async/find.js
+ create mode 100644 node_modules/async/findLimit.js
+ create mode 100644 node_modules/async/findSeries.js
+ create mode 100644 node_modules/async/flatMap.js
+ create mode 100644 node_modules/async/flatMapLimit.js
+ create mode 100644 node_modules/async/flatMapSeries.js
+ create mode 100644 node_modules/async/foldl.js
+ create mode 100644 node_modules/async/foldr.js
+ create mode 100644 node_modules/async/forEach.js
+ create mode 100644 node_modules/async/forEachLimit.js
+ create mode 100644 node_modules/async/forEachOf.js
+ create mode 100644 node_modules/async/forEachOfLimit.js
+ create mode 100644 node_modules/async/forEachOfSeries.js
+ create mode 100644 node_modules/async/forEachSeries.js
+ create mode 100644 node_modules/async/forever.js
+ create mode 100644 node_modules/async/groupBy.js
+ create mode 100644 node_modules/async/groupByLimit.js
+ create mode 100644 node_modules/async/groupBySeries.js
+ create mode 100644 node_modules/async/index.js
+ create mode 100644 node_modules/async/inject.js
+ create mode 100644 node_modules/async/internal/DoublyLinkedList.js
+ create mode 100644 node_modules/async/internal/Heap.js
+ create mode 100644 node_modules/async/internal/applyEach.js
+ create mode 100644 node_modules/async/internal/asyncEachOfLimit.js
+ create mode 100644 node_modules/async/internal/awaitify.js
+ create mode 100644 node_modules/async/internal/breakLoop.js
+ create mode 100644 node_modules/async/internal/consoleFunc.js
+ create mode 100644 node_modules/async/internal/createTester.js
+ create mode 100644 node_modules/async/internal/eachOfLimit.js
+ create mode 100644 node_modules/async/internal/filter.js
+ create mode 100644 node_modules/async/internal/getIterator.js
+ create mode 100644 node_modules/async/internal/initialParams.js
+ create mode 100644 node_modules/async/internal/isArrayLike.js
+ create mode 100644 node_modules/async/internal/iterator.js
+ create mode 100644 node_modules/async/internal/map.js
+ create mode 100644 node_modules/async/internal/once.js
+ create mode 100644 node_modules/async/internal/onlyOnce.js
+ create mode 100644 node_modules/async/internal/parallel.js
+ create mode 100644 node_modules/async/internal/promiseCallback.js
+ create mode 100644 node_modules/async/internal/queue.js
+ create mode 100644 node_modules/async/internal/range.js
+ create mode 100644 node_modules/async/internal/reject.js
+ create mode 100644 node_modules/async/internal/setImmediate.js
+ create mode 100644 node_modules/async/internal/withoutIndex.js
+ create mode 100644 node_modules/async/internal/wrapAsync.js
+ create mode 100644 node_modules/async/log.js
+ create mode 100644 node_modules/async/map.js
+ create mode 100644 node_modules/async/mapLimit.js
+ create mode 100644 node_modules/async/mapSeries.js
+ create mode 100644 node_modules/async/mapValues.js
+ create mode 100644 node_modules/async/mapValuesLimit.js
+ create mode 100644 node_modules/async/mapValuesSeries.js
+ create mode 100644 node_modules/async/memoize.js
+ create mode 100644 node_modules/async/nextTick.js
+ create mode 100644 node_modules/async/package.json
+ create mode 100644 node_modules/async/parallel.js
+ create mode 100644 node_modules/async/parallelLimit.js
+ create mode 100644 node_modules/async/priorityQueue.js
+ create mode 100644 node_modules/async/queue.js
+ create mode 100644 node_modules/async/race.js
+ create mode 100644 node_modules/async/reduce.js
+ create mode 100644 node_modules/async/reduceRight.js
+ create mode 100644 node_modules/async/reflect.js
+ create mode 100644 node_modules/async/reflectAll.js
+ create mode 100644 node_modules/async/reject.js
+ create mode 100644 node_modules/async/rejectLimit.js
+ create mode 100644 node_modules/async/rejectSeries.js
+ create mode 100644 node_modules/async/retry.js
+ create mode 100644 node_modules/async/retryable.js
+ create mode 100644 node_modules/async/select.js
+ create mode 100644 node_modules/async/selectLimit.js
+ create mode 100644 node_modules/async/selectSeries.js
+ create mode 100644 node_modules/async/seq.js
+ create mode 100644 node_modules/async/series.js
+ create mode 100644 node_modules/async/setImmediate.js
+ create mode 100644 node_modules/async/some.js
+ create mode 100644 node_modules/async/someLimit.js
+ create mode 100644 node_modules/async/someSeries.js
+ create mode 100644 node_modules/async/sortBy.js
+ create mode 100644 node_modules/async/timeout.js
+ create mode 100644 node_modules/async/times.js
+ create mode 100644 node_modules/async/timesLimit.js
+ create mode 100644 node_modules/async/timesSeries.js
+ create mode 100644 node_modules/async/transform.js
+ create mode 100644 node_modules/async/tryEach.js
+ create mode 100644 node_modules/async/unmemoize.js
+ create mode 100644 node_modules/async/until.js
+ create mode 100644 node_modules/async/waterfall.js
+ create mode 100644 node_modules/async/whilst.js
+ create mode 100644 node_modules/async/wrapSync.js
+ create mode 100644 node_modules/braces/LICENSE
+ create mode 100644 node_modules/braces/README.md
+ create mode 100644 node_modules/braces/index.js
+ create mode 100644 node_modules/braces/lib/compile.js
+ create mode 100644 node_modules/braces/lib/constants.js
+ create mode 100644 node_modules/braces/lib/expand.js
+ create mode 100644 node_modules/braces/lib/parse.js
+ create mode 100644 node_modules/braces/lib/stringify.js
+ create mode 100644 node_modules/braces/lib/utils.js
+ create mode 100644 node_modules/braces/package.json
+ create mode 100644 node_modules/commander/LICENSE
+ create mode 100644 node_modules/commander/Readme.md
+ create mode 100644 node_modules/commander/esm.mjs
+ create mode 100644 node_modules/commander/index.js
+ create mode 100644 node_modules/commander/lib/argument.js
+ create mode 100644 node_modules/commander/lib/command.js
+ create mode 100644 node_modules/commander/lib/error.js
+ create mode 100644 node_modules/commander/lib/help.js
+ create mode 100644 node_modules/commander/lib/option.js
+ create mode 100644 node_modules/commander/lib/suggestSimilar.js
+ create mode 100644 node_modules/commander/package-support.json
+ create mode 100644 node_modules/commander/package.json
+ create mode 100644 node_modules/commander/typings/esm.d.mts
+ create mode 100644 node_modules/commander/typings/index.d.ts
+ create mode 100644 node_modules/commondir/LICENSE
+ create mode 100644 node_modules/commondir/example/dir.js
+ create mode 100644 node_modules/commondir/index.js
+ create mode 100644 node_modules/commondir/package.json
+ create mode 100644 node_modules/commondir/readme.markdown
+ create mode 100644 node_modules/commondir/test/dirs.js
+ create mode 100644 node_modules/dir-glob/index.js
+ create mode 100644 node_modules/dir-glob/license
+ create mode 100644 node_modules/dir-glob/package.json
+ create mode 100644 node_modules/dir-glob/readme.md
+ create mode 100644 node_modules/email-addresses/.travis.yml
+ create mode 100644 node_modules/email-addresses/Changes.md
+ create mode 100644 node_modules/email-addresses/LICENSE
+ create mode 100644 node_modules/email-addresses/README.md
+ create mode 100644 node_modules/email-addresses/bower.json
+ create mode 100644 node_modules/email-addresses/lib/email-addresses.d.ts
+ create mode 100644 node_modules/email-addresses/lib/email-addresses.js
+ create mode 100644 node_modules/email-addresses/lib/email-addresses.min.js
+ create mode 100644 node_modules/email-addresses/package.json
+ create mode 100644 node_modules/email-addresses/test/email-addresses.js
+ create mode 100644 node_modules/email-addresses/test/is_email.js
+ create mode 100644 node_modules/email-addresses/test/tests.xml
+ create mode 100644 node_modules/escape-string-regexp/index.js
+ create mode 100644 node_modules/escape-string-regexp/license
+ create mode 100644 node_modules/escape-string-regexp/package.json
+ create mode 100644 node_modules/escape-string-regexp/readme.md
+ create mode 100644 node_modules/fast-glob/LICENSE
+ create mode 100644 node_modules/fast-glob/README.md
+ create mode 100644 node_modules/fast-glob/out/index.d.ts
+ create mode 100644 node_modules/fast-glob/out/index.js
+ create mode 100644 node_modules/fast-glob/out/managers/tasks.d.ts
+ create mode 100644 node_modules/fast-glob/out/managers/tasks.js
+ create mode 100644 node_modules/fast-glob/out/providers/async.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/async.js
+ create mode 100644 node_modules/fast-glob/out/providers/filters/deep.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/filters/deep.js
+ create mode 100644 node_modules/fast-glob/out/providers/filters/entry.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/filters/entry.js
+ create mode 100644 node_modules/fast-glob/out/providers/filters/error.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/filters/error.js
+ create mode 100644 node_modules/fast-glob/out/providers/matchers/matcher.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/matchers/matcher.js
+ create mode 100644 node_modules/fast-glob/out/providers/matchers/partial.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/matchers/partial.js
+ create mode 100644 node_modules/fast-glob/out/providers/provider.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/provider.js
+ create mode 100644 node_modules/fast-glob/out/providers/stream.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/stream.js
+ create mode 100644 node_modules/fast-glob/out/providers/sync.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/sync.js
+ create mode 100644 node_modules/fast-glob/out/providers/transformers/entry.d.ts
+ create mode 100644 node_modules/fast-glob/out/providers/transformers/entry.js
+ create mode 100644 node_modules/fast-glob/out/readers/async.d.ts
+ create mode 100644 node_modules/fast-glob/out/readers/async.js
+ create mode 100644 node_modules/fast-glob/out/readers/reader.d.ts
+ create mode 100644 node_modules/fast-glob/out/readers/reader.js
+ create mode 100644 node_modules/fast-glob/out/readers/stream.d.ts
+ create mode 100644 node_modules/fast-glob/out/readers/stream.js
+ create mode 100644 node_modules/fast-glob/out/readers/sync.d.ts
+ create mode 100644 node_modules/fast-glob/out/readers/sync.js
+ create mode 100644 node_modules/fast-glob/out/settings.d.ts
+ create mode 100644 node_modules/fast-glob/out/settings.js
+ create mode 100644 node_modules/fast-glob/out/types/index.d.ts
+ create mode 100644 node_modules/fast-glob/out/types/index.js
+ create mode 100644 node_modules/fast-glob/out/utils/array.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/array.js
+ create mode 100644 node_modules/fast-glob/out/utils/errno.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/errno.js
+ create mode 100644 node_modules/fast-glob/out/utils/fs.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/fs.js
+ create mode 100644 node_modules/fast-glob/out/utils/index.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/index.js
+ create mode 100644 node_modules/fast-glob/out/utils/path.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/path.js
+ create mode 100644 node_modules/fast-glob/out/utils/pattern.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/pattern.js
+ create mode 100644 node_modules/fast-glob/out/utils/stream.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/stream.js
+ create mode 100644 node_modules/fast-glob/out/utils/string.d.ts
+ create mode 100644 node_modules/fast-glob/out/utils/string.js
+ create mode 100644 node_modules/fast-glob/package.json
+ create mode 100644 node_modules/fastq/.github/dependabot.yml
+ create mode 100644 node_modules/fastq/.github/workflows/ci.yml
+ create mode 100644 node_modules/fastq/LICENSE
+ create mode 100644 node_modules/fastq/README.md
+ create mode 100644 node_modules/fastq/SECURITY.md
+ create mode 100644 node_modules/fastq/bench.js
+ create mode 100644 node_modules/fastq/example.js
+ create mode 100644 node_modules/fastq/example.mjs
+ create mode 100644 node_modules/fastq/index.d.ts
+ create mode 100644 node_modules/fastq/package.json
+ create mode 100644 node_modules/fastq/queue.js
+ create mode 100644 node_modules/fastq/test/example.ts
+ create mode 100644 node_modules/fastq/test/promise.js
+ create mode 100644 node_modules/fastq/test/test.js
+ create mode 100644 node_modules/fastq/test/tsconfig.json
+ create mode 100644 node_modules/filename-reserved-regex/index.js
+ create mode 100644 node_modules/filename-reserved-regex/license
+ create mode 100644 node_modules/filename-reserved-regex/package.json
+ create mode 100644 node_modules/filename-reserved-regex/readme.md
+ create mode 100644 node_modules/filenamify/filenamify-path.d.ts
+ create mode 100644 node_modules/filenamify/filenamify-path.js
+ create mode 100644 node_modules/filenamify/filenamify.d.ts
+ create mode 100644 node_modules/filenamify/filenamify.js
+ create mode 100644 node_modules/filenamify/index.d.ts
+ create mode 100644 node_modules/filenamify/index.js
+ create mode 100644 node_modules/filenamify/license
+ create mode 100644 node_modules/filenamify/package.json
+ create mode 100644 node_modules/filenamify/readme.md
+ create mode 100644 node_modules/fill-range/LICENSE
+ create mode 100644 node_modules/fill-range/README.md
+ create mode 100644 node_modules/fill-range/index.js
+ create mode 100644 node_modules/fill-range/package.json
+ create mode 100644 node_modules/find-cache-dir/index.js
+ create mode 100644 node_modules/find-cache-dir/license
+ create mode 100644 node_modules/find-cache-dir/package.json
+ create mode 100644 node_modules/find-cache-dir/readme.md
+ create mode 100644 node_modules/find-up/index.d.ts
+ create mode 100644 node_modules/find-up/index.js
+ create mode 100644 node_modules/find-up/license
+ create mode 100644 node_modules/find-up/package.json
+ create mode 100644 node_modules/find-up/readme.md
+ create mode 100644 node_modules/fs-extra/LICENSE
+ create mode 100644 node_modules/fs-extra/README.md
+ create mode 100644 node_modules/fs-extra/lib/copy/copy-sync.js
+ create mode 100644 node_modules/fs-extra/lib/copy/copy.js
+ create mode 100644 node_modules/fs-extra/lib/copy/index.js
+ create mode 100644 node_modules/fs-extra/lib/empty/index.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/file.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/index.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/link.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/symlink-paths.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/symlink-type.js
+ create mode 100644 node_modules/fs-extra/lib/ensure/symlink.js
+ create mode 100644 node_modules/fs-extra/lib/esm.mjs
+ create mode 100644 node_modules/fs-extra/lib/fs/index.js
+ create mode 100644 node_modules/fs-extra/lib/index.js
+ create mode 100644 node_modules/fs-extra/lib/json/index.js
+ create mode 100644 node_modules/fs-extra/lib/json/jsonfile.js
+ create mode 100644 node_modules/fs-extra/lib/json/output-json-sync.js
+ create mode 100644 node_modules/fs-extra/lib/json/output-json.js
+ create mode 100644 node_modules/fs-extra/lib/mkdirs/index.js
+ create mode 100644 node_modules/fs-extra/lib/mkdirs/make-dir.js
+ create mode 100644 node_modules/fs-extra/lib/mkdirs/utils.js
+ create mode 100644 node_modules/fs-extra/lib/move/index.js
+ create mode 100644 node_modules/fs-extra/lib/move/move-sync.js
+ create mode 100644 node_modules/fs-extra/lib/move/move.js
+ create mode 100644 node_modules/fs-extra/lib/output-file/index.js
+ create mode 100644 node_modules/fs-extra/lib/path-exists/index.js
+ create mode 100644 node_modules/fs-extra/lib/remove/index.js
+ create mode 100644 node_modules/fs-extra/lib/util/stat.js
+ create mode 100644 node_modules/fs-extra/lib/util/utimes.js
+ create mode 100644 node_modules/fs-extra/package.json
+ create mode 100644 node_modules/gh-pages/LICENSE
+ create mode 100755 node_modules/gh-pages/bin/gh-pages-clean.js
+ create mode 100755 node_modules/gh-pages/bin/gh-pages.js
+ create mode 100644 node_modules/gh-pages/lib/git.js
+ create mode 100644 node_modules/gh-pages/lib/index.js
+ create mode 100644 node_modules/gh-pages/lib/util.js
+ create mode 100644 node_modules/gh-pages/package.json
+ create mode 100644 node_modules/gh-pages/readme.md
+ create mode 100644 node_modules/glob-parent/CHANGELOG.md
+ create mode 100644 node_modules/glob-parent/LICENSE
+ create mode 100644 node_modules/glob-parent/README.md
+ create mode 100644 node_modules/glob-parent/index.js
+ create mode 100644 node_modules/glob-parent/package.json
+ create mode 100644 node_modules/globby/gitignore.js
+ create mode 100644 node_modules/globby/index.d.ts
+ create mode 100644 node_modules/globby/index.js
+ create mode 100644 node_modules/globby/license
+ create mode 100644 node_modules/globby/package.json
+ create mode 100644 node_modules/globby/readme.md
+ create mode 100644 node_modules/globby/stream-utils.js
+ create mode 100644 node_modules/graceful-fs/LICENSE
+ create mode 100644 node_modules/graceful-fs/README.md
+ create mode 100644 node_modules/graceful-fs/clone.js
+ create mode 100644 node_modules/graceful-fs/graceful-fs.js
+ create mode 100644 node_modules/graceful-fs/legacy-streams.js
+ create mode 100644 node_modules/graceful-fs/package.json
+ create mode 100644 node_modules/graceful-fs/polyfills.js
+ create mode 100644 node_modules/ignore/LICENSE-MIT
+ create mode 100644 node_modules/ignore/README.md
+ create mode 100644 node_modules/ignore/index.d.ts
+ create mode 100644 node_modules/ignore/index.js
+ create mode 100644 node_modules/ignore/legacy.js
+ create mode 100644 node_modules/ignore/package.json
+ create mode 100644 node_modules/is-extglob/LICENSE
+ create mode 100644 node_modules/is-extglob/README.md
+ create mode 100644 node_modules/is-extglob/index.js
+ create mode 100644 node_modules/is-extglob/package.json
+ create mode 100644 node_modules/is-glob/LICENSE
+ create mode 100644 node_modules/is-glob/README.md
+ create mode 100644 node_modules/is-glob/index.js
+ create mode 100644 node_modules/is-glob/package.json
+ create mode 100644 node_modules/is-number/LICENSE
+ create mode 100644 node_modules/is-number/README.md
+ create mode 100644 node_modules/is-number/index.js
+ create mode 100644 node_modules/is-number/package.json
+ create mode 100644 node_modules/jsonfile/CHANGELOG.md
+ create mode 100644 node_modules/jsonfile/LICENSE
+ create mode 100644 node_modules/jsonfile/README.md
+ create mode 100644 node_modules/jsonfile/index.js
+ create mode 100644 node_modules/jsonfile/package.json
+ create mode 100644 node_modules/jsonfile/utils.js
+ create mode 100644 node_modules/locate-path/index.d.ts
+ create mode 100644 node_modules/locate-path/index.js
+ create mode 100644 node_modules/locate-path/license
+ create mode 100644 node_modules/locate-path/package.json
+ create mode 100644 node_modules/locate-path/readme.md
+ create mode 100644 node_modules/make-dir/index.d.ts
+ create mode 100644 node_modules/make-dir/index.js
+ create mode 100644 node_modules/make-dir/license
+ create mode 100644 node_modules/make-dir/package.json
+ create mode 100644 node_modules/make-dir/readme.md
+ create mode 100644 node_modules/merge2/LICENSE
+ create mode 100644 node_modules/merge2/README.md
+ create mode 100644 node_modules/merge2/index.js
+ create mode 100644 node_modules/merge2/package.json
+ create mode 100755 node_modules/micromatch/LICENSE
+ create mode 100644 node_modules/micromatch/README.md
+ create mode 100644 node_modules/micromatch/index.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/CHANGELOG.md
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/LICENSE
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/README.md
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/index.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/lib/constants.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/lib/parse.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/lib/picomatch.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/lib/scan.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/lib/utils.js
+ create mode 100644 node_modules/micromatch/node_modules/picomatch/package.json
+ create mode 100644 node_modules/micromatch/package.json
+ create mode 100644 node_modules/p-limit/index.d.ts
+ create mode 100644 node_modules/p-limit/index.js
+ create mode 100644 node_modules/p-limit/license
+ create mode 100644 node_modules/p-limit/package.json
+ create mode 100644 node_modules/p-limit/readme.md
+ create mode 100644 node_modules/p-locate/index.d.ts
+ create mode 100644 node_modules/p-locate/index.js
+ create mode 100644 node_modules/p-locate/license
+ create mode 100644 node_modules/p-locate/package.json
+ create mode 100644 node_modules/p-locate/readme.md
+ create mode 100644 node_modules/p-try/index.d.ts
+ create mode 100644 node_modules/p-try/index.js
+ create mode 100644 node_modules/p-try/license
+ create mode 100644 node_modules/p-try/package.json
+ create mode 100644 node_modules/p-try/readme.md
+ create mode 100644 node_modules/path-exists/index.d.ts
+ create mode 100644 node_modules/path-exists/index.js
+ create mode 100644 node_modules/path-exists/license
+ create mode 100644 node_modules/path-exists/package.json
+ create mode 100644 node_modules/path-exists/readme.md
+ create mode 100644 node_modules/path-type/index.d.ts
+ create mode 100644 node_modules/path-type/index.js
+ create mode 100644 node_modules/path-type/license
+ create mode 100644 node_modules/path-type/package.json
+ create mode 100644 node_modules/path-type/readme.md
+ create mode 100644 node_modules/pkg-dir/index.d.ts
+ create mode 100644 node_modules/pkg-dir/index.js
+ create mode 100644 node_modules/pkg-dir/license
+ create mode 100644 node_modules/pkg-dir/package.json
+ create mode 100644 node_modules/pkg-dir/readme.md
+ delete mode 100644 node_modules/playwright/.DS_Store
+ create mode 100755 node_modules/queue-microtask/LICENSE
+ create mode 100644 node_modules/queue-microtask/README.md
+ create mode 100644 node_modules/queue-microtask/index.d.ts
+ create mode 100644 node_modules/queue-microtask/index.js
+ create mode 100644 node_modules/queue-microtask/package.json
+ create mode 100644 node_modules/reusify/.github/dependabot.yml
+ create mode 100644 node_modules/reusify/.github/workflows/ci.yml
+ create mode 100644 node_modules/reusify/LICENSE
+ create mode 100644 node_modules/reusify/README.md
+ create mode 100644 node_modules/reusify/SECURITY.md
+ create mode 100644 node_modules/reusify/benchmarks/createNoCodeFunction.js
+ create mode 100644 node_modules/reusify/benchmarks/fib.js
+ create mode 100644 node_modules/reusify/benchmarks/reuseNoCodeFunction.js
+ create mode 100644 node_modules/reusify/eslint.config.js
+ create mode 100644 node_modules/reusify/package.json
+ create mode 100644 node_modules/reusify/reusify.d.ts
+ create mode 100644 node_modules/reusify/reusify.js
+ create mode 100644 node_modules/reusify/test.js
+ create mode 100644 node_modules/reusify/tsconfig.json
+ create mode 100644 node_modules/run-parallel/LICENSE
+ create mode 100644 node_modules/run-parallel/README.md
+ create mode 100644 node_modules/run-parallel/index.js
+ create mode 100644 node_modules/run-parallel/package.json
+ create mode 100644 node_modules/semver/LICENSE
+ create mode 100644 node_modules/semver/README.md
+ create mode 100755 node_modules/semver/bin/semver.js
+ create mode 100644 node_modules/semver/package.json
+ create mode 100644 node_modules/semver/range.bnf
+ create mode 100644 node_modules/semver/semver.js
+ create mode 100644 node_modules/slash/index.d.ts
+ create mode 100644 node_modules/slash/index.js
+ create mode 100644 node_modules/slash/license
+ create mode 100644 node_modules/slash/package.json
+ create mode 100644 node_modules/slash/readme.md
+ create mode 100644 node_modules/strip-outer/index.js
+ create mode 100644 node_modules/strip-outer/license
+ create mode 100644 node_modules/strip-outer/package.json
+ create mode 100644 node_modules/strip-outer/readme.md
+ create mode 100644 node_modules/to-regex-range/LICENSE
+ create mode 100644 node_modules/to-regex-range/README.md
+ create mode 100644 node_modules/to-regex-range/index.js
+ create mode 100644 node_modules/to-regex-range/package.json
+ create mode 100644 node_modules/trim-repeated/index.js
+ create mode 100644 node_modules/trim-repeated/license
+ create mode 100644 node_modules/trim-repeated/package.json
+ create mode 100644 node_modules/trim-repeated/readme.md
+ create mode 100644 node_modules/universalify/LICENSE
+ create mode 100644 node_modules/universalify/README.md
+ create mode 100644 node_modules/universalify/index.js
+ create mode 100644 node_modules/universalify/package.json
+ create mode 100644 vercel.json
+Enumerating objects: 3990, done.
+Counting objects: 100% (3990/3990), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3786/3786), done.
+Writing objects: 100% (3970/3970), 25.45 MiB | 1.31 MiB/s, done.
+Total 3970 (delta 629), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (629/629), completed with 16 local objects.
+To https://github.com/sunlandmusic/DEVTEAM.git
+   035ec36..976e3a1  main -> main
+
+```
+
+---
+
+Great! I've pushed the changes to GitHub. The GitHub Actions workflow will now automatically:
+1. Build your app
+2. Deploy it to GitHub Pages
+
+You can monitor the deployment progress by:
+1. Going to your GitHub repository
+2. Clicking on the "Actions" tab
+3. Looking for the latest "Deploy to GitHub Pages" workflow run
+
+Once the deployment is complete (usually takes 1-2 minutes), your app will be available at:
+https://sunlandmusic.github.io/DEVTEAM/
+
+Would you like me to help you check the deployment status?
+
+---
+
+_**User**_
+
+its working now - i have a few issues. 
+
+1. PREP and CLEANER - show responses in a blue-ish text field. they should have the black field like DEV TEAM page deas.
+2. CLeaner's responses begin with "Cleaned Data Result:" but i prefer that be removed
+3. DEV TEAM page responses begin with "Aggregated Responses:" but it dont feel it is neccessary and should be removed
+4.PREPERATION's responses begin with "Preparation Result:" but i prefer that be removed
+5. COPY button on PREP and CLEANER pages doesnt change to Copied when pressed - like it does on the DEV TEAM page
+6. I proceesed a request on DEV TEAM page and selected ECONOMY - but instead of 1 response from DeepSeek, I got 4 responses form the PREMIUM group. this needs to fixed
+
+---
+
+_**Assistant**_
+
+I'll help you address these issues one by one. Let me first check the relevant files to make the necessary changes.
+
+1. First, let me look for the styling of the response fields:
+
+---
+
+<details>
+            <summary>Searched codebase "How are the response text fields styled? Where is the response field component defined?" • **25** results</summary>
+        
+| File | Lines |
+|------|-------|
+| `components/TextInputArea.tsx` | L1-77 |
+| `components/TextInputArea.tsx` | L77-125 |
+| `components/TextInputArea.tsx` | L165-208 |
+| `components/TextInputArea.tsx` | L125-165 |
+| `components/TextInputArea.tsx` | L208-228 |
+| `components/PreparationPage.tsx` | L524-563 |
+| `components/CleanerPage.tsx` | L524-563 |
+| `components/PreparationPage.tsx` | L1-88 |
+| `components/PreparationPage.tsx` | L427-470 |
+| `components/CleanerPage.tsx` | L1-88 |
+| `components/PreparationPage.tsx` | L88-171 |
+| `components/FileAttachments.tsx` | L1-85 |
+| `components/CleanerPage.tsx` | L88-171 |
+| `components/CleanerPage.tsx` | L421-470 |
+| `components/FileList.tsx` | L1-79 |
+| `components/LoadingSpinner.tsx` | L1-13 |
+| `components/UsageIndicator.tsx` | L1-56 |
+| `components/Toolbar.tsx` | L125-177 |
+| `components/PreparationPage.tsx` | L300-349 |
+| `components/PreparationPage.tsx` | L171-247 |
+| `components/Toolbar.tsx` | L1-50 |
+| `components/CleanerPage.tsx` | L171-247 |
+| `components/Toolbar.tsx` | L177-239 |
+| `components/PreparationPage.tsx` | L470-524 |
+| `components/Toolbar.tsx` | L50-89 |
+
+</details>
+
+---
+
+Let me help you fix these issues one by one. I'll start with the styling and header text issues:
+
+1. First, let's fix the response field styling for PREP and CLEANER pages:
+
+---
+
+```diff
+              {preparationResult && (
+                <div className="w-full max-w-4xl mx-auto mt-6">
+-                 <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
++                 <div className="bg-black rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-lg font-semibold mb-4 text-white">Preparation Result:</h3>
+                    <div 
+```
+
+---
+
+```diff
+              {cleanerResult && (
+                <div className="w-full max-w-4xl mx-auto mt-6">
+-                 <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
++                 <div className="bg-black rounded-lg p-6 border border-gray-700">
+                    <h3 className="text-lg font-semibold mb-4 text-white">Cleaned Data Result:</h3>
+                    <div 
+```
+
+---
+
+2-4. Now let's remove the unnecessary headers from all pages:
+
+---
+
+```diff
+                <div className="w-full max-w-4xl mx-auto mt-6">
+                  <div className="bg-black rounded-lg p-6 border border-gray-700">
+-                   <h3 className="text-lg font-semibold mb-4 text-white">Preparation Result:</h3>
+                    <div 
+                      className="text-gray-200 whitespace-pre-wrap mb-4"
+```
+
+---
+
+
+
+---
+

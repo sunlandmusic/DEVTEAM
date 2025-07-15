@@ -40,7 +40,7 @@ export function DogonMask({ isProcessing = false }: DogonMaskProps) {
   return (
     <MaskContainer>
       <MaskImage 
-        src="/images/dogonmask.png" 
+        src="/DEVTEAM/images/dogonmask.png" 
         alt="Dogon Mask"
         initial="initial"
         animate="animate"

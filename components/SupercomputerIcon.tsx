@@ -98,7 +98,7 @@ export function SupercomputerIcon({
         ))}
       </SlotsContainer>
       <ComputerImage
-        src="/images/supercomputer.png"
+        src="/DEVTEAM/images/supercomputer.png"
         alt="Supercomputer"
       />
     </Container>

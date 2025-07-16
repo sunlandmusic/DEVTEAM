@@ -164,7 +164,7 @@ export function SupercomputerIcon({
             <ModelVersion>2.5 PRO</ModelVersion>
             <ModelName>CLAUDE</ModelName>
             <ModelVersion>OPUS 4</ModelVersion>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '8px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8px', gap: '4px' }}>
               <div>
                 <span style={{ fontSize: '12px' }}>GROK 4</span>
               </div>

@@ -779,13 +779,13 @@ const App: React.FC = () => {
                 <button
                   onClick={() => handleModelModeChange('economy')}
                   style={{
-                    background: devTeamModelMode === 'economy' ? '#9333ea' : 'transparent',
-                    border: '1px solid #9333ea',
+                    background: devTeamModelMode === 'economy' ? '#333' : 'transparent',
+                    border: '1px solid #333',
                     borderRadius: '8px',
                     padding: '8px 12px',
                     cursor: 'pointer',
                     transition: 'background-color 0.2s ease-in-out',
-                    color: devTeamModelMode === 'economy' ? 'white' : '#9333ea',
+                    color: devTeamModelMode === 'economy' ? 'white' : '#666',
                     fontSize: '14px',
                     fontWeight: '600',
                     display: 'flex',
@@ -799,13 +799,13 @@ const App: React.FC = () => {
                 <button
                   onClick={() => handleModelModeChange('pro')}
                   style={{
-                    background: devTeamModelMode === 'pro' ? '#9333ea' : 'transparent',
-                    border: '1px solid #9333ea',
+                    background: devTeamModelMode === 'pro' ? '#333' : 'transparent',
+                    border: '1px solid #333',
                     borderRadius: '8px',
                     padding: '8px 12px',
                     cursor: 'pointer',
                     transition: 'background-color 0.2s ease-in-out',
-                    color: devTeamModelMode === 'pro' ? 'white' : '#9333ea',
+                    color: devTeamModelMode === 'pro' ? 'white' : '#666',
                     fontSize: '14px',
                     fontWeight: '600',
                     display: 'flex',
@@ -819,13 +819,13 @@ const App: React.FC = () => {
                 <button
                   onClick={() => handleModelModeChange('premium')}
                   style={{
-                    background: devTeamModelMode === 'premium' ? '#9333ea' : 'transparent',
-                    border: '1px solid #9333ea',
+                    background: devTeamModelMode === 'premium' ? '#333' : 'transparent',
+                    border: '1px solid #333',
                     borderRadius: '8px',
                     padding: '8px 12px',
                     cursor: 'pointer',
                     transition: 'background-color 0.2s ease-in-out',
-                    color: devTeamModelMode === 'premium' ? 'white' : '#9333ea',
+                    color: devTeamModelMode === 'premium' ? 'white' : '#666',
                     fontSize: '14px',
                     fontWeight: '600',
                     display: 'flex',

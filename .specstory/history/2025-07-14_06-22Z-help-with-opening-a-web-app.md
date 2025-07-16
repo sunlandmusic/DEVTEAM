@@ -26170,6 +26170,236 @@ DEEPSEEK R1 (SHOULD BE ON THE NEXT LINE UNDER GROK 4)
 
 _**Assistant**_
 
+I'll help you with both changes. Let's start by checking the current button colors and then update the model text layout.
+
+Let me first check the button styling in App.tsx.
+
+---
+
+Read file: App.tsx
+
+---
+
+Let me check the rest of App.tsx to find the button styling:
+
+---
+
+Read file: App.tsx
+
+---
+
+Now let me check the SupercomputerIcon component to update the model text layout:
+
+---
+
+Read file: components/SupercomputerIcon.tsx
+
+---
+
+Let me make both changes:
+
+1. First, I'll update the button colors in App.tsx to remove the purple:
+
+---
+
+```diff
+                    onClick={() => handleModelModeChange('economy')}
+                    style={{
+-                     background: devTeamModelMode === 'economy' ? '#9333ea' : 'transparent',
+-                     border: '1px solid #9333ea',
++                     background: devTeamModelMode === 'economy' ? '#333' : 'transparent',
++                     border: '1px solid #333',
+                      borderRadius: '8px',
+                      padding: '8px 12px',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s ease-in-out',
+-                     color: devTeamModelMode === 'economy' ? 'white' : '#9333ea',
++                     color: devTeamModelMode === 'economy' ? 'white' : '#666',
+                      fontSize: '14px',
+                      fontWeight: '600',
+```
+
+```diff
+                    onClick={() => handleModelModeChange('pro')}
+                    style={{
+-                     background: devTeamModelMode === 'pro' ? '#9333ea' : 'transparent',
+-                     border: '1px solid #9333ea',
++                     background: devTeamModelMode === 'pro' ? '#333' : 'transparent',
++                     border: '1px solid #333',
+                      borderRadius: '8px',
+                      padding: '8px 12px',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s ease-in-out',
+-                     color: devTeamModelMode === 'pro' ? 'white' : '#9333ea',
++                     color: devTeamModelMode === 'pro' ? 'white' : '#666',
+                      fontSize: '14px',
+                      fontWeight: '600',
+```
+
+```diff
+                    onClick={() => handleModelModeChange('premium')}
+                    style={{
+-                     background: devTeamModelMode === 'premium' ? '#9333ea' : 'transparent',
+-                     border: '1px solid #9333ea',
++                     background: devTeamModelMode === 'premium' ? '#333' : 'transparent',
++                     border: '1px solid #333',
+                      borderRadius: '8px',
+                      padding: '8px 12px',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s ease-in-out',
+-                     color: devTeamModelMode === 'premium' ? 'white' : '#9333ea',
++                     color: devTeamModelMode === 'premium' ? 'white' : '#666',
+                      fontSize: '14px',
+                      fontWeight: '600',
+```
+
+---
+
+2. Now, let's update the model text layout in SupercomputerIcon.tsx to put GROK 4 on one line and DEEPSEEK R1 on the next line:
+
+---
+
+```diff
+              <ModelName>CLAUDE</ModelName>
+              <ModelVersion>OPUS 4</ModelVersion>
+-             <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '8px' }}>
++             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '8px', gap: '4px' }}>
+                <div>
+                  <span style={{ fontSize: '12px' }}>GROK 4</span>
+```
+
+---
+
+Now let's deploy these changes to the website:
+
+---
+
+```bash
+npm run build && git add . && git commit -m "Update: Restored button colors and adjusted model text layout" && git push origin main && git subtree push --prefix dist origin gh-pages
+```
+
+```
+
+> dev-team-ai-orchestration-system@0.0.0 build
+> vite build
+
+vite v6.3.5 building for production...
+
+/index.css doesn't exist at build time, it will remain unchanged to be resolved at runtime
+node_modules/framer-motion/dist/es/index.mjs (1:0): Module level directives cause errors when bundled, "use c
+lient" in "node_modules/framer-motion/dist/es/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs (1:0): Module level directives cause err
+ors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs" was
+ignored.
+node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs (1:0): Module level directives cause erro
+rs when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs" was ig
+nored.
+node_modules/framer-motion/dist/es/context/MotionContext/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionContext/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs (1:0): Module level directives cause errors
+ when bundled, "use client" in "node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs" was ignore
+d.
+node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/PresenceContext.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/context/PresenceContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/motion/index.mjs (1:0): Module level directives cause errors when bundled,
+ "use client" in "node_modules/framer-motion/dist/es/motion/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/LazyContext.mjs (1:0): Module level directives cause errors when b
+undled, "use client" in "node_modules/framer-motion/dist/es/context/LazyContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Group.mjs (1:0): Module level directives cause errors w
+hen bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Group.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Item.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Item.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs (1:0): Module level directive
+s cause errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/P
+resenceChild.mjs" was ignored.
+node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs (1:0): Module level directives ca
+use errors when bundled, "use client" in "node_modules/framer-motion/dist/es/motion/features/layout/MeasureLa
+yout.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/ReorderContext.mjs (1:0): Module level directives cause errors whe
+n bundled, "use client" in "node_modules/framer-motion/dist/es/context/ReorderContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs (1:0): Module level directives cau
+se errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/PopChi
+ld.mjs" was ignored.
+✓ 473 modules transformed.
+dist/index.html                   3.97 kB │ gzip:   1.40 kB
+dist/assets/index-DE9lFJnX.css    1.24 kB │ gzip:   0.40 kB
+dist/assets/index-CoN_P27W.js   374.00 kB │ gzip: 119.68 kB
+✓ built in 720ms
+[main 726d805] Update: Restored button colors and adjusted model text layout
+ 5 files changed, 160 insertions(+), 13 deletions(-)
+ rename dist/assets/{index-BQANKQmJ.js => index-CoN_P27W.js} (68%)
+Enumerating objects: 22, done.
+Counting objects: 100% (22/22), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 118.47 KiB | 6.97 MiB/s, done.
+Total 12 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), completed with 7 local objects.
+To https://github.com/sunlandmusic/DEVTEAM.git
+   32d048f..726d805  main -> main
+git push using:  origin gh-pages
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 116.92 KiB | 10.63 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/sunlandmusic/DEVTEAM.git
+   2a30c69..f4b389f  f4b389f0693f2f25da9c37689df9918a9d97373d -> gh-pages
+
+```
+
+---
+
+I've made all the requested changes:
+
+1. Restored the model selection buttons to their previous color scheme:
+   - Changed from purple (#9333ea) to dark gray (#333)
+   - Updated both active and inactive states
+   - Maintained the same button layout and functionality
+
+2. Updated the model text layout in the premium mode:
+   - GROK 4 is now on its own line
+   - DEEPSEEK R1 is on the line below it
+   - Maintained proper spacing and alignment
+   - Kept the same font size and styling
+
+The changes have been deployed to GitHub Pages and should be live at https://sunlandmusic.github.io/DEVTEAM/ in a few minutes.
+
+Is there anything else you'd like me to adjust?
+
+---
+
+_**User**_
+
+CHANGE ECONOMY TO "Eco"
+
+---
+
+_**Assistant**_
+
+I'll update the text of the Economy button to "Eco" in App.tsx.
+
+---
+
+
+
+---
+
 
 
 ---

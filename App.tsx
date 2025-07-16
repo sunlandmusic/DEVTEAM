@@ -794,7 +794,7 @@ const App: React.FC = () => {
                   }}
                   aria-label="Switch to Economy model"
                 >
-                  Economy
+                  Eco
                 </button>
                 <button
                   onClick={() => handleModelModeChange('pro')}

@@ -101,7 +101,6 @@ export function TasksButton({ isActive, onToggle, disabled, iconPath }: TasksBut
           </svg>
         )}
       </ToolButton>
-      <Tooltip>Multi-Task</Tooltip>
     </TooltipContainer>
   );
 } 

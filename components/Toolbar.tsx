@@ -4,6 +4,7 @@ import { TasksButton } from './TasksButton';
 import { useAutomationStore } from '../services/store';
 import { UsageIndicator } from './UsageIndicator';
 import { OpenRouterService } from '../services/OpenRouterService';
+import { PromptButton } from './PromptButton';
 
 const ToolbarContainer = styled.div`
   width: 100%;
@@ -16,6 +17,8 @@ const ToolbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 1;
 `;
 
 const TooltipContainer = styled.div`
@@ -23,19 +26,19 @@ const TooltipContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
 
   &:hover {
-    z-index: 99999;
+    z-index: 9999;
   }
 `;
 
 const Tooltip = styled.span`
   position: absolute;
-  bottom: -44px;
+  top: -44px;
   left: 50%;
   transform: translateX(-50%);
-  background: transparent;
+  background: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.7);
   padding: 4px 8px;
   font-size: 14px;
@@ -43,6 +46,8 @@ const Tooltip = styled.span`
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  border-radius: 4px;
+  z-index: 9999;
 
   ${TooltipContainer}:hover & {
     opacity: 1;
@@ -60,7 +65,7 @@ const ToolButton = styled.button<{ $isDisabled?: boolean; $isSend?: boolean; $is
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 6px;
   opacity: ${props => props.$isDisabled ? 0.5 : 1};
 
   &:hover:not(:disabled) {
@@ -72,47 +77,20 @@ const ToolButton = styled.button<{ $isDisabled?: boolean; $isSend?: boolean; $is
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-  svg {
-    width: 28px;
-    height: 28px;
-    color: rgba(255, 255, 255, 0.9);
-    transform: ${props => props.$isSend ? 'rotate(-30deg)' : props.$isStop ? 'rotate(180deg)' : 'none'};
+  img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
   }
 `;
 
-const GlobeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M2 12h20"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-  </svg>
-);
-
-const SendIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <line x1="12" y1="22" x2="12" y2="13"/>
-    <polygon points="12 2 20 13 4 13 12 2"/>
-  </svg>
-);
-
-const PaperclipIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
-  </svg>
-);
-
-const SettingsIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="3"/>
-    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
-  </svg>
-);
-
-const StopIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="5" y="5" width="14" height="14" />
-  </svg>
-);
+const ICON_PATHS = {
+  ATTACH: '/DEVTEAM/images/TOOLBAR ICONS/Attach.png',
+  PROMPT: '/DEVTEAM/images/TOOLBAR ICONS/Prompt.png',
+  MULTITASK: '/DEVTEAM/images/TOOLBAR ICONS/MultiTask.png',
+  USAGE: '/DEVTEAM/images/TOOLBAR ICONS/Usage.png',
+  START: '/DEVTEAM/images/TOOLBAR ICONS/START.png',
+};
 
 interface ToolbarProps {
   disabled?: boolean;
@@ -122,6 +100,7 @@ interface ToolbarProps {
   onStop?: () => void;
   hasTasks: boolean;
   isProcessing: boolean;
+  onPromptSelect: (prompt: string) => void;
 }
 
 export function Toolbar({ 
@@ -131,7 +110,8 @@ export function Toolbar({
   onSend, 
   onStop,
   hasTasks,
-  isProcessing 
+  isProcessing,
+  onPromptSelect
 }: ToolbarProps) {
   const { addAttachment, updateAttachment, processingStatus } = useAutomationStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -183,7 +163,7 @@ export function Toolbar({
           $isDisabled={disabled}
           onClick={() => fileInputRef.current?.click()}
         >
-          <PaperclipIcon />
+          <img src={ICON_PATHS.ATTACH} alt="Attach" />
           <input
             ref={fileInputRef}
             type="file"
@@ -193,23 +173,32 @@ export function Toolbar({
             accept="*/*"
           />
         </ToolButton>
-        <Tooltip>Attach (file upload max 1MB)</Tooltip>
+        <Tooltip>Attach</Tooltip>
       </TooltipContainer>
 
-      <TasksButton 
-        isActive={isTaskMode}
-        onToggle={() => onTaskModeChange(!isTaskMode)}
-        disabled={false}
-      />
+      <TooltipContainer>
+        <PromptButton onSelectPrompt={onPromptSelect} iconPath={ICON_PATHS.PROMPT} />
+        <Tooltip>Prompt</Tooltip>
+      </TooltipContainer>
 
-      <TooltipContainer style={{ position: 'relative', zIndex: showUsage ? 99999 : 1 }}>
+      <TooltipContainer>
+        <TasksButton 
+          isActive={isTaskMode}
+          onToggle={() => onTaskModeChange(!isTaskMode)}
+          disabled={false}
+          iconPath={ICON_PATHS.MULTITASK}
+        />
+        <Tooltip>Multi Task</Tooltip>
+      </TooltipContainer>
+
+      <TooltipContainer style={{ position: 'relative' }}>
         <ToolButton 
           ref={settingsButtonRef}
           onClick={() => setShowUsage(!showUsage)}
           $isDisabled={false}
           $isActive={showUsage}
         >
-          <SettingsIcon />
+          <img src={ICON_PATHS.USAGE} alt="Usage" />
         </ToolButton>
         <Tooltip>Usage</Tooltip>
         <UsageIndicator 
@@ -230,7 +219,11 @@ export function Toolbar({
             backgroundColor: isProcessing ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
           }}
         >
-          {isProcessing ? <StopIcon /> : <SendIcon />}
+          <img 
+            src={ICON_PATHS.START} 
+            alt={isProcessing ? 'Stop' : 'Start'} 
+            style={{ transform: 'rotate(44deg)' }}
+          />
         </ToolButton>
         <Tooltip>{isProcessing ? 'Stop' : 'Start'}</Tooltip>
       </TooltipContainer>

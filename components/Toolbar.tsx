@@ -222,7 +222,7 @@ export function Toolbar({
           <img 
             src={ICON_PATHS.START} 
             alt={isProcessing ? 'Stop' : 'Start'} 
-            style={{ transform: 'rotate(-22deg)' }}
+            style={{ transform: 'rotate(-44deg)' }}
           />
         </ToolButton>
         <Tooltip>{isProcessing ? 'Stop' : 'Start'}</Tooltip>

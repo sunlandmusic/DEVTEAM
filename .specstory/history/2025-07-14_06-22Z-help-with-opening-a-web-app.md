@@ -24908,6 +24908,246 @@ how about swiveling around to the back of the computer with words written on the
 
 _**Assistant**_
 
+I'll help you update the design to use the transparent computer back image and remove the "(x4)" text. Let me modify the SupercomputerIcon component:
+
+---
+
+```diff
+  const BackFace = styled(ComputerFace)`
+    transform: rotateY(180deg);
+-   background: rgba(0, 0, 0, 0.8);
+-   border-radius: 10px;
+-   padding: 10px;
+  `;
+  
+```
+
+```diff
+    line-height: 1.4;
+    opacity: 0.9;
++   position: absolute;
++   top: 50%;
++   left: 50%;
++   transform: translate(-50%, -50%);
++   width: 80%;
++   z-index: 3;
+  `;
+  
+```
+
+```diff
+      switch(modelMode) {
+        case 'economy':
+-         return 'DeepSeek R1 (x4)';
++         return 'DeepSeek R1';
+        case 'pro':
+-         return 'Claude Opus 4 (x4)';
++         return 'Claude Opus 4';
+        case 'premium':
+-         return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1 (x4)';
++         return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1';
+        default:
+          return '';
+```
+
+```diff
+          </FrontFace>
+          <BackFace>
++           <ComputerImage
++             src="/DEVTEAM/images/supercomputerback.png"
++             alt="Supercomputer Back"
++           />
+            <ModelInfo>
+              {getModelInfo()}
+```
+
+---
+
+Now let's update the App component to remove the "(x4)" text from the model display text as well:
+
+---
+
+```diff
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
+                <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
+-                 {devTeamModelMode === 'economy' && 'DeepSeek R1 (x4)'}
+-                 {devTeamModelMode === 'pro' && 'Claude Opus 4 (x4)'}
++                 {devTeamModelMode === 'economy' && 'DeepSeek R1'}
++                 {devTeamModelMode === 'pro' && 'Claude Opus 4'}
+                  {devTeamModelMode === 'premium' && (
+                    <>
+                      <div>GEMINI 2.5 PRO - CLAUDE OPUS 4</div>
+-                     <div>GROK 4 - DEEPSEEK R1 (x4)</div>
++                     <div>GROK 4 - DEEPSEEK R1</div>
+                    </>
+                  )}
+```
+
+---
+
+Let's build and deploy these changes:
+
+---
+
+```bash
+npm run build
+```
+
+```
+
+> dev-team-ai-orchestration-system@0.0.0 build
+> vite build
+
+vite v6.3.5 building for production...
+
+/index.css doesn't exist at build time, it will remain unchanged to be resolved at runtime
+node_modules/framer-motion/dist/es/index.mjs (1:0): Module level directives cause errors when bundled, "use c
+lient" in "node_modules/framer-motion/dist/es/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LazyMotion/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs (1:0): Module level directives cause err
+ors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/MotionConfig/index.mjs" was
+ignored.
+node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs (1:0): Module level directives cause erro
+rs when bundled, "use client" in "node_modules/framer-motion/dist/es/components/LayoutGroup/index.mjs" was ig
+nored.
+node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs (1:0): Module level directives cause errors
+ when bundled, "use client" in "node_modules/framer-motion/dist/es/context/LayoutGroupContext.mjs" was ignore
+d.
+node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionConfigContext.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/MotionContext/index.mjs (1:0): Module level directives cause error
+s when bundled, "use client" in "node_modules/framer-motion/dist/es/context/MotionContext/index.mjs" was igno
+red.
+node_modules/framer-motion/dist/es/context/PresenceContext.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/context/PresenceContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/context/SwitchLayoutGroupContext.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs (1:0): Module level directives cause 
+errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs
+" was ignored.
+node_modules/framer-motion/dist/es/motion/index.mjs (1:0): Module level directives cause errors when bundled,
+ "use client" in "node_modules/framer-motion/dist/es/motion/index.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/LazyContext.mjs (1:0): Module level directives cause errors when b
+undled, "use client" in "node_modules/framer-motion/dist/es/context/LazyContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Group.mjs (1:0): Module level directives cause errors w
+hen bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Group.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/Reorder/Item.mjs (1:0): Module level directives cause errors wh
+en bundled, "use client" in "node_modules/framer-motion/dist/es/components/Reorder/Item.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PresenceChild.mjs (1:0): Module level directive
+s cause errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/P
+resenceChild.mjs" was ignored.
+node_modules/framer-motion/dist/es/motion/features/layout/MeasureLayout.mjs (1:0): Module level directives ca
+use errors when bundled, "use client" in "node_modules/framer-motion/dist/es/motion/features/layout/MeasureLa
+yout.mjs" was ignored.
+node_modules/framer-motion/dist/es/context/ReorderContext.mjs (1:0): Module level directives cause errors whe
+n bundled, "use client" in "node_modules/framer-motion/dist/es/context/ReorderContext.mjs" was ignored.
+node_modules/framer-motion/dist/es/components/AnimatePresence/PopChild.mjs (1:0): Module level directives cau
+se errors when bundled, "use client" in "node_modules/framer-motion/dist/es/components/AnimatePresence/PopChi
+ld.mjs" was ignored.
+✓ 473 modules transformed.
+dist/index.html                   3.97 kB │ gzip:   1.39 kB
+dist/assets/index-DE9lFJnX.css    1.24 kB │ gzip:   0.40 kB
+dist/assets/index-DkTbz8Rt.js   374.04 kB │ gzip: 119.69 kB
+✓ built in 710ms
+
+```
+
+---
+
+```bash
+git add .
+```
+
+---
+
+```bash
+git commit -m "Updated supercomputer animation with back image and removed (x4) text"
+```
+
+```
+[main d93892e] Updated supercomputer animation with back image and removed (x4) text
+ 7 files changed, 281 insertions(+), 45 deletions(-)
+ rename dist/assets/{index-CQPlUrhg.js => index-DkTbz8Rt.js} (62%)
+ create mode 100644 dist/images/supercomputerback.png
+ create mode 100644 public/images/supercomputerback.png
+
+```
+
+---
+
+```bash
+git push origin main
+```
+
+```
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (15/15), 126.55 KiB | 9.04 MiB/s, done.
+Total 15 (delta 8), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (8/8), completed with 8 local objects.
+To https://github.com/sunlandmusic/DEVTEAM.git
+   8476c30..d93892e  main -> main
+
+```
+
+---
+
+```bash
+git push origin `git subtree split --prefix dist main`:gh-pages --force
+```
+
+```
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (7/7), 124.15 KiB | 8.87 MiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/sunlandmusic/DEVTEAM.git
+   2223c81..47a982c  47a982c497bb89cfc8264a4ddf41aafcd798a069 -> gh-pages
+
+```
+
+---
+
+I've made the following changes:
+
+1. Removed all "(x4)" text from both the SupercomputerIcon and App components
+2. Added the transparent supercomputerback.png image to the back face of the computer
+3. Positioned the model text on top of the back image
+4. Adjusted the styling to ensure good text visibility
+5. Built and deployed the changes to GitHub Pages
+
+The changes should now be live at https://sunlandmusic.github.io/DEVTEAM/. When you click a model selection button, you'll see:
+- All computers rotate smoothly to show their back side
+- The transparent computer back image with the model text overlaid
+- Cleaner model names without the "(x4)" text
+- After 3 seconds, they'll rotate back to show the front
+
+Would you like me to make any adjustments to the text positioning or styling on the back of the computers?
+
+---
+
+_**User**_
+
+OK ITS NICE. 
+1. THE STAYING TIME NEEDS TO BE LONGER - SO IF ITS 3 SECONDS, IT SHOULD BE 5 SECONDS NOW. 
+2. CLAUDE SHOULD BE ONTOP, AND OPUS 4 SHOULD BE WRITTEN UNDER IT
+3. GEMINI SHOULD BE ONTOP, AND 2.5 PRO WRITTEN BELOW IT
+4. DEEPSEEK ON TOP, R1 BELOW IT 
+5. ADD ONE LINE OF SPACE BETWEEN NAMES
+
+---
+
+_**Assistant**_
+
 
 
 ---

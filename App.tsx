@@ -713,10 +713,10 @@ const App: React.FC = () => {
     setDevTeamModelMode(mode);
     // Show model info
     setShowModelInfo(true);
-    // Hide after 3 seconds
+    // Hide after 5 seconds
     setTimeout(() => {
       setShowModelInfo(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
@@ -771,12 +771,36 @@ const App: React.FC = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
               <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
-                {devTeamModelMode === 'economy' && 'DeepSeek R1'}
-                {devTeamModelMode === 'pro' && 'Claude Opus 4'}
+                {devTeamModelMode === 'economy' && (
+                  <>
+                    <div>DEEPSEEK</div>
+                    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>R1</div>
+                  </>
+                )}
+                {devTeamModelMode === 'pro' && (
+                  <>
+                    <div>CLAUDE</div>
+                    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>OPUS 4</div>
+                  </>
+                )}
                 {devTeamModelMode === 'premium' && (
                   <>
-                    <div>GEMINI 2.5 PRO - CLAUDE OPUS 4</div>
-                    <div>GROK 4 - DEEPSEEK R1</div>
+                    <div style={{ marginBottom: '8px' }}>
+                      <div>GEMINI</div>
+                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>2.5 PRO</div>
+                    </div>
+                    <div style={{ marginBottom: '8px' }}>
+                      <div>CLAUDE</div>
+                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>OPUS 4</div>
+                    </div>
+                    <div style={{ marginBottom: '8px' }}>
+                      <div>GROK</div>
+                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>4</div>
+                    </div>
+                    <div>
+                      <div>DEEPSEEK</div>
+                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>R1</div>
+                    </div>
                   </>
                 )}
               </div>

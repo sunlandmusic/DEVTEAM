@@ -83,7 +83,7 @@ const ModelInfo = styled.div`
   color: #fff;
   font-size: 12px;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.8;
   opacity: 0.9;
   position: absolute;
   top: 50%;
@@ -91,6 +91,16 @@ const ModelInfo = styled.div`
   transform: translate(-50%, -50%);
   width: 80%;
   z-index: 3;
+`;
+
+const ModelName = styled.div`
+  margin-bottom: 4px;
+`;
+
+const ModelVersion = styled.div`
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 16px;
 `;
 
 const ComputerImage = styled.img`
@@ -134,11 +144,32 @@ export function SupercomputerIcon({
   const getModelInfo = () => {
     switch(modelMode) {
       case 'economy':
-        return 'DeepSeek R1';
+        return (
+          <>
+            <ModelName>DEEPSEEK</ModelName>
+            <ModelVersion>R1</ModelVersion>
+          </>
+        );
       case 'pro':
-        return 'Claude Opus 4';
+        return (
+          <>
+            <ModelName>CLAUDE</ModelName>
+            <ModelVersion>OPUS 4</ModelVersion>
+          </>
+        );
       case 'premium':
-        return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1';
+        return (
+          <>
+            <ModelName>GEMINI</ModelName>
+            <ModelVersion>2.5 PRO</ModelVersion>
+            <ModelName>CLAUDE</ModelName>
+            <ModelVersion>OPUS 4</ModelVersion>
+            <ModelName>GROK</ModelName>
+            <ModelVersion>4</ModelVersion>
+            <ModelName>DEEPSEEK</ModelName>
+            <ModelVersion>R1</ModelVersion>
+          </>
+        );
       default:
         return '';
     }

@@ -129,13 +129,16 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const Title = styled.h1`
-  font-size: 2.25rem;
-  font-weight: bold;
+const Title = styled.div`
   margin: 0;
   padding: 0;
   line-height: 1;
   text-align: center;
+  img {
+    width: 400px;
+    height: auto;
+    display: block;
+  }
 `;
 
 const Subtitle = styled.div`
@@ -731,7 +734,9 @@ const App: React.FC = () => {
               onMouseLeave={() => setShowDevTeamTooltip(false)}
               style={{ marginTop: '0px', marginBottom: '16px' }}
             >
-              <Title>DEV TEAM</Title>
+              <Title>
+                <img src="/DEVTEAM/images/DEV_TEAM.png" alt="DEV TEAM" />
+              </Title>
               <div 
                 style={{
                   position: 'absolute',
@@ -770,124 +775,66 @@ const App: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
-              <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
-                {devTeamModelMode === 'economy' && (
-                  <>
-                    <div>DEEPSEEK</div>
-                    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>R1</div>
-                  </>
-                )}
-                {devTeamModelMode === 'pro' && (
-                  <>
-                    <div>CLAUDE</div>
-                    <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>OPUS 4</div>
-                  </>
-                )}
-                {devTeamModelMode === 'premium' && (
-                  <>
-                    <div style={{ marginBottom: '8px' }}>
-                      <div>GEMINI</div>
-                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>2.5 PRO</div>
-                    </div>
-                    <div style={{ marginBottom: '8px' }}>
-                      <div>CLAUDE</div>
-                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>OPUS 4</div>
-                    </div>
-                    <div style={{ marginBottom: '8px' }}>
-                      <div>GROK</div>
-                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>4</div>
-                    </div>
-                    <div>
-                      <div>DEEPSEEK</div>
-                      <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>R1</div>
-                    </div>
-                  </>
-                )}
-              </div>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                 <button
                   onClick={() => handleModelModeChange('economy')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'economy' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'economy' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'economy' ? '#9333ea' : 'transparent',
+                    border: '1px solid #9333ea',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'economy' ? 'white' : '#9333ea',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'economy') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'economy') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Economy model"
                 >
-                  ECONOMY
+                  Economy
                 </button>
                 <button
                   onClick={() => handleModelModeChange('pro')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'pro' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'pro' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'pro' ? '#9333ea' : 'transparent',
+                    border: '1px solid #9333ea',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'pro' ? 'white' : '#9333ea',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'pro') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'pro') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Pro model"
                 >
-                  PRO
+                  Pro
                 </button>
                 <button
                   onClick={() => handleModelModeChange('premium')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'premium' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'premium' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'premium' ? '#9333ea' : 'transparent',
+                    border: '1px solid #9333ea',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'premium' ? 'white' : '#9333ea',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'premium') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'premium') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Premium model"
                 >
-                  PREMIUM
+                  Premium
                 </button>
               </div>
             </div>

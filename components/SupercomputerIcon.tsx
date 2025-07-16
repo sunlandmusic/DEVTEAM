@@ -164,10 +164,14 @@ export function SupercomputerIcon({
             <ModelVersion>2.5 PRO</ModelVersion>
             <ModelName>CLAUDE</ModelName>
             <ModelVersion>OPUS 4</ModelVersion>
-            <ModelName>GROK</ModelName>
-            <ModelVersion>4</ModelVersion>
-            <ModelName>DEEPSEEK</ModelName>
-            <ModelVersion>R1</ModelVersion>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginTop: '8px' }}>
+              <div>
+                <span style={{ fontSize: '12px' }}>GROK 4</span>
+              </div>
+              <div>
+                <span style={{ fontSize: '12px' }}>DEEPSEEK R1</span>
+              </div>
+            </div>
           </>
         );
       default:

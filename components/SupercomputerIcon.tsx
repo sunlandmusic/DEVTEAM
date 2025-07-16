@@ -77,9 +77,6 @@ const FrontFace = styled(ComputerFace)`
 
 const BackFace = styled(ComputerFace)`
   transform: rotateY(180deg);
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  padding: 10px;
 `;
 
 const ModelInfo = styled.div`
@@ -88,6 +85,12 @@ const ModelInfo = styled.div`
   text-align: center;
   line-height: 1.4;
   opacity: 0.9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index: 3;
 `;
 
 const ComputerImage = styled.img`
@@ -131,11 +134,11 @@ export function SupercomputerIcon({
   const getModelInfo = () => {
     switch(modelMode) {
       case 'economy':
-        return 'DeepSeek R1 (x4)';
+        return 'DeepSeek R1';
       case 'pro':
-        return 'Claude Opus 4 (x4)';
+        return 'Claude Opus 4';
       case 'premium':
-        return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1 (x4)';
+        return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1';
       default:
         return '';
     }
@@ -161,6 +164,10 @@ export function SupercomputerIcon({
           />
         </FrontFace>
         <BackFace>
+          <ComputerImage
+            src="/DEVTEAM/images/supercomputerback.png"
+            alt="Supercomputer Back"
+          />
           <ModelInfo>
             {getModelInfo()}
           </ModelInfo>

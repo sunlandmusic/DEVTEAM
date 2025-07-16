@@ -771,12 +771,12 @@ const App: React.FC = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
               <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
-                {devTeamModelMode === 'economy' && 'DeepSeek R1 (x4)'}
-                {devTeamModelMode === 'pro' && 'Claude Opus 4 (x4)'}
+                {devTeamModelMode === 'economy' && 'DeepSeek R1'}
+                {devTeamModelMode === 'pro' && 'Claude Opus 4'}
                 {devTeamModelMode === 'premium' && (
                   <>
                     <div>GEMINI 2.5 PRO - CLAUDE OPUS 4</div>
-                    <div>GROK 4 - DEEPSEEK R1 (x4)</div>
+                    <div>GROK 4 - DEEPSEEK R1</div>
                   </>
                 )}
               </div>

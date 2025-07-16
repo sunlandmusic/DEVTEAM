@@ -219,7 +219,11 @@ export function Toolbar({
             backgroundColor: isProcessing ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
           }}
         >
-          <img src={ICON_PATHS.START} alt={isProcessing ? 'Stop' : 'Start'} />
+          <img 
+            src={ICON_PATHS.START} 
+            alt={isProcessing ? 'Stop' : 'Start'} 
+            style={{ transform: 'rotate(-22deg)' }}
+          />
         </ToolButton>
         <Tooltip>{isProcessing ? 'Stop' : 'Start'}</Tooltip>
       </TooltipContainer>

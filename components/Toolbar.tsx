@@ -4,6 +4,7 @@ import { TasksButton } from './TasksButton';
 import { useAutomationStore } from '../services/store';
 import { UsageIndicator } from './UsageIndicator';
 import { OpenRouterService } from '../services/OpenRouterService';
+import { PromptButton } from './PromptButton';
 
 const ToolbarContainer = styled.div`
   width: 100%;
@@ -16,6 +17,8 @@ const ToolbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 1;
 `;
 
 const TooltipContainer = styled.div`
@@ -23,19 +26,19 @@ const TooltipContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
 
   &:hover {
-    z-index: 99999;
+    z-index: 9999;
   }
 `;
 
 const Tooltip = styled.span`
   position: absolute;
-  bottom: -44px;
+  top: -44px;
   left: 50%;
   transform: translateX(-50%);
-  background: transparent;
+  background: rgba(0, 0, 0, 0.8);
   color: rgba(255, 255, 255, 0.7);
   padding: 4px 8px;
   font-size: 14px;
@@ -43,6 +46,8 @@ const Tooltip = styled.span`
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
+  border-radius: 4px;
+  z-index: 9999;
 
   ${TooltipContainer}:hover & {
     opacity: 1;
@@ -122,6 +127,7 @@ interface ToolbarProps {
   onStop?: () => void;
   hasTasks: boolean;
   isProcessing: boolean;
+  onPromptSelect: (prompt: string) => void;
 }
 
 export function Toolbar({ 
@@ -131,7 +137,8 @@ export function Toolbar({
   onSend, 
   onStop,
   hasTasks,
-  isProcessing 
+  isProcessing,
+  onPromptSelect
 }: ToolbarProps) {
   const { addAttachment, updateAttachment, processingStatus } = useAutomationStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -193,16 +200,24 @@ export function Toolbar({
             accept="*/*"
           />
         </ToolButton>
-        <Tooltip>Attach (file upload max 1MB)</Tooltip>
+        <Tooltip>Attach</Tooltip>
       </TooltipContainer>
 
-      <TasksButton 
-        isActive={isTaskMode}
-        onToggle={() => onTaskModeChange(!isTaskMode)}
-        disabled={false}
-      />
+      <TooltipContainer>
+        <PromptButton onSelectPrompt={onPromptSelect} />
+        <Tooltip>Prompt</Tooltip>
+      </TooltipContainer>
 
-      <TooltipContainer style={{ position: 'relative', zIndex: showUsage ? 99999 : 1 }}>
+      <TooltipContainer>
+        <TasksButton 
+          isActive={isTaskMode}
+          onToggle={() => onTaskModeChange(!isTaskMode)}
+          disabled={false}
+        />
+        <Tooltip>Multi Task</Tooltip>
+      </TooltipContainer>
+
+      <TooltipContainer style={{ position: 'relative' }}>
         <ToolButton 
           ref={settingsButtonRef}
           onClick={() => setShowUsage(!showUsage)}

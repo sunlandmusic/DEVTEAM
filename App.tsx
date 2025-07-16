@@ -432,6 +432,7 @@ const App: React.FC = () => {
   const [taskAttachments, setTaskAttachments] = useState<File[]>([]);
   const [taskTeam, setTaskTeam] = useState<TeamId | null>(null);
   const [taskQueue, setTaskQueue] = useState<any[]>([]);
+  const [showModelInfo, setShowModelInfo] = useState(false);
   const { 
     attachments, 
     processingStatus, 
@@ -707,6 +708,17 @@ const App: React.FC = () => {
   const isSendEnabled = devTeamPrompt.trim() !== '' && hasTeamsToProcess;
   const isInProcessingMode = processingStatus.processingTeams.length > 0;
 
+  // Handle model mode change
+  const handleModelModeChange = (mode: 'economy' | 'pro' | 'premium') => {
+    setDevTeamModelMode(mode);
+    // Show model info
+    setShowModelInfo(true);
+    // Hide after 3 seconds
+    setTimeout(() => {
+      setShowModelInfo(false);
+    }, 3000);
+  };
+
   return (
     <>
       <style>{globalStyles}</style>
@@ -745,6 +757,8 @@ const App: React.FC = () => {
                   onClick={() => handleTeamSelect(id)}
                   isSelected={devTeamSelectedTeams.includes(id)}
                   isCurrentlyProcessing={processingStatus.processingTeams.includes(id)}
+                  modelMode={devTeamModelMode}
+                  showModelInfo={showModelInfo}
                 />
               ))}
             </div>
@@ -756,10 +770,19 @@ const App: React.FC = () => {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
+              <div style={{ fontSize: '0.75rem', color: '#aaa', textAlign: 'center', lineHeight: '1.2', maxWidth: '300px' }}>
+                {devTeamModelMode === 'economy' && 'DeepSeek R1 (x4)'}
+                {devTeamModelMode === 'pro' && 'Claude Opus 4 (x4)'}
+                {devTeamModelMode === 'premium' && (
+                  <>
+                    <div>GEMINI 2.5 PRO - CLAUDE OPUS 4</div>
+                    <div>GROK 4 - DEEPSEEK R1 (x4)</div>
+                  </>
+                )}
+              </div>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <PromptButton onSelectPrompt={setDevTeamPrompt} />
                 <button
-                  onClick={() => setDevTeamModelMode('economy')}
+                  onClick={() => handleModelModeChange('economy')}
                   style={{
                     padding: '8px 16px',
                     background: devTeamModelMode === 'economy' ? '#444' : 'transparent',
@@ -787,7 +810,7 @@ const App: React.FC = () => {
                   ECONOMY
                 </button>
                 <button
-                  onClick={() => setDevTeamModelMode('pro')}
+                  onClick={() => handleModelModeChange('pro')}
                   style={{
                     padding: '8px 16px',
                     background: devTeamModelMode === 'pro' ? '#444' : 'transparent',
@@ -815,7 +838,7 @@ const App: React.FC = () => {
                   PRO
                 </button>
                 <button
-                  onClick={() => setDevTeamModelMode('premium')}
+                  onClick={() => handleModelModeChange('premium')}
                   style={{
                     padding: '8px 16px',
                     background: devTeamModelMode === 'premium' ? '#444' : 'transparent',
@@ -867,6 +890,7 @@ const App: React.FC = () => {
                         onStop={() => handleSend()}
                         hasTasks={taskQueue.length > 0}
                         isProcessing={devTeamProcessing}
+                        onPromptSelect={setDevTeamPrompt}
                       />
                     </div>
                   </InputContainer>

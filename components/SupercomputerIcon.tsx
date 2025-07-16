@@ -10,6 +10,16 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  perspective: 1000px;
+`;
+
+const RotatingContainer = styled.div<{ $isRotated: boolean }>`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transform: ${props => props.$isRotated ? 'rotateY(180deg)' : 'rotateY(0)'};
 `;
 
 const PurpleGlow = styled.div<{ $isVisible: boolean }>`
@@ -51,6 +61,35 @@ const Slot = styled.div<{ $isProcessing: boolean, $delay: number }>`
   transition: opacity 0.3s ease;
 `;
 
+const ComputerFace = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FrontFace = styled(ComputerFace)`
+  transform: rotateY(0deg);
+`;
+
+const BackFace = styled(ComputerFace)`
+  transform: rotateY(180deg);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+`;
+
+const ModelInfo = styled.div`
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.4;
+  opacity: 0.9;
+`;
+
 const ComputerImage = styled.img`
   position: absolute;
   width: 100%;
@@ -64,8 +103,11 @@ export function SupercomputerIcon({
   teamId,
   onClick,
   isSelected = false,
-  isCurrentlyProcessing = false
+  isCurrentlyProcessing = false,
+  modelMode = 'economy',
+  showModelInfo = false
 }: SupercomputerIconProps) {
+  
   // Get unique base offset for each computer
   const getBaseOffset = (id: number) => {
     switch(id) {
@@ -85,22 +127,45 @@ export function SupercomputerIcon({
     return baseOffset + slotDelay;
   };
 
+  // Get model information based on mode
+  const getModelInfo = () => {
+    switch(modelMode) {
+      case 'economy':
+        return 'DeepSeek R1 (x4)';
+      case 'pro':
+        return 'Claude Opus 4 (x4)';
+      case 'premium':
+        return 'GEMINI 2.5 PRO\nCLAUDE OPUS 4\nGROK 4\nDEEPSEEK R1 (x4)';
+      default:
+        return '';
+    }
+  };
+
   return (
     <Container onClick={onClick}>
       {isSelected && <PurpleGlow $isVisible={isSelected} />}
-      <SlotsContainer>
-        {Array(6).fill(null).map((_, index) => (
-          <Slot
-            key={index}
-            $isProcessing={isCurrentlyProcessing}
-            $delay={getDelay(index)}
+      <RotatingContainer $isRotated={showModelInfo}>
+        <FrontFace>
+          <SlotsContainer>
+            {Array(6).fill(null).map((_, index) => (
+              <Slot
+                key={index}
+                $isProcessing={isCurrentlyProcessing}
+                $delay={getDelay(index)}
+              />
+            ))}
+          </SlotsContainer>
+          <ComputerImage
+            src="/DEVTEAM/images/supercomputer.png"
+            alt="Supercomputer"
           />
-        ))}
-      </SlotsContainer>
-      <ComputerImage
-        src="/DEVTEAM/images/supercomputer.png"
-        alt="Supercomputer"
-      />
+        </FrontFace>
+        <BackFace>
+          <ModelInfo>
+            {getModelInfo()}
+          </ModelInfo>
+        </BackFace>
+      </RotatingContainer>
     </Container>
   );
 }

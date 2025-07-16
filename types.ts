@@ -24,6 +24,8 @@ export interface SupercomputerIconProps {
   onClick: () => void;
   isSelected: boolean;
   isCurrentlyProcessing: boolean;
+  modelMode?: 'economy' | 'pro' | 'premium';
+  showModelInfo?: boolean;
 }
 
 // Props for DogonMask component

@@ -63,15 +63,22 @@ const ToolButton = styled.button<{ $isDisabled?: boolean; $isActive?: boolean }>
     height: 28px;
     color: rgba(255, 255, 255, 0.9);
   }
+
+  img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
 `;
 
 interface TasksButtonProps {
   isActive: boolean;
   onToggle: () => void;
   disabled?: boolean;
+  iconPath?: string;
 }
 
-export function TasksButton({ isActive, onToggle, disabled }: TasksButtonProps) {
+export function TasksButton({ isActive, onToggle, disabled, iconPath }: TasksButtonProps) {
   const handleClick = () => {
     console.log('TasksButton clicked! isActive:', isActive, 'disabled:', disabled);
     onToggle();
@@ -84,9 +91,16 @@ export function TasksButton({ isActive, onToggle, disabled }: TasksButtonProps) 
         $isDisabled={disabled}
         $isActive={isActive}
       >
-        <TasksIcon />
+        {iconPath ? (
+          <img src={iconPath} alt="Multi-Task" />
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="2"/>
+            <path d="M9 14l2 2 4-4"/>
+          </svg>
+        )}
       </ToolButton>
-      <Tooltip>Multi-Task</Tooltip>
     </TooltipContainer>
   );
 } 

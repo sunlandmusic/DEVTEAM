@@ -129,13 +129,16 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const Title = styled.h1`
-  font-size: 2.25rem;
-  font-weight: bold;
+const Title = styled.div`
   margin: 0;
   padding: 0;
   line-height: 1;
   text-align: center;
+  img {
+    width: 400px;
+    height: auto;
+    display: block;
+  }
 `;
 
 const Subtitle = styled.div`
@@ -432,6 +435,7 @@ const App: React.FC = () => {
   const [taskAttachments, setTaskAttachments] = useState<File[]>([]);
   const [taskTeam, setTaskTeam] = useState<TeamId | null>(null);
   const [taskQueue, setTaskQueue] = useState<any[]>([]);
+  const [showModelInfo, setShowModelInfo] = useState(false);
   const { 
     attachments, 
     processingStatus, 
@@ -707,6 +711,17 @@ const App: React.FC = () => {
   const isSendEnabled = devTeamPrompt.trim() !== '' && hasTeamsToProcess;
   const isInProcessingMode = processingStatus.processingTeams.length > 0;
 
+  // Handle model mode change
+  const handleModelModeChange = (mode: 'economy' | 'pro' | 'premium') => {
+    setDevTeamModelMode(mode);
+    // Show model info
+    setShowModelInfo(true);
+    // Hide after 5 seconds
+    setTimeout(() => {
+      setShowModelInfo(false);
+    }, 5000);
+  };
+
   return (
     <>
       <style>{globalStyles}</style>
@@ -719,7 +734,9 @@ const App: React.FC = () => {
               onMouseLeave={() => setShowDevTeamTooltip(false)}
               style={{ marginTop: '0px', marginBottom: '16px' }}
             >
-              <Title>DEV TEAM</Title>
+              <Title>
+                <img src="/DEVTEAM/images/DEV_TEAM.png" alt="DEV TEAM" />
+              </Title>
               <div 
                 style={{
                   position: 'absolute',
@@ -745,6 +762,8 @@ const App: React.FC = () => {
                   onClick={() => handleTeamSelect(id)}
                   isSelected={devTeamSelectedTeams.includes(id)}
                   isCurrentlyProcessing={processingStatus.processingTeams.includes(id)}
+                  modelMode={devTeamModelMode}
+                  showModelInfo={showModelInfo}
                 />
               ))}
             </div>
@@ -757,90 +776,65 @@ const App: React.FC = () => {
 
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', margin: '18px 0 0 0', minHeight: 40 }}>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <PromptButton onSelectPrompt={setDevTeamPrompt} />
                 <button
-                  onClick={() => setDevTeamModelMode('economy')}
+                  onClick={() => handleModelModeChange('economy')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'economy' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'economy' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'economy' ? '#333' : 'transparent',
+                    border: '1px solid #333',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'economy' ? 'white' : '#666',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'economy') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'economy') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Economy model"
                 >
-                  ECONOMY
+                  Eco
                 </button>
                 <button
-                  onClick={() => setDevTeamModelMode('pro')}
+                  onClick={() => handleModelModeChange('pro')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'pro' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'pro' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'pro' ? '#333' : 'transparent',
+                    border: '1px solid #333',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'pro' ? 'white' : '#666',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'pro') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'pro') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Pro model"
                 >
-                  PRO
+                  Pro
                 </button>
                 <button
-                  onClick={() => setDevTeamModelMode('premium')}
+                  onClick={() => handleModelModeChange('premium')}
                   style={{
-                    padding: '8px 16px',
-                    background: devTeamModelMode === 'premium' ? '#444' : 'transparent',
-                    color: devTeamModelMode === 'premium' ? '#fff' : '#666',
-                    border: '1px solid #444',
-                    borderRadius: '11px',
+                    background: devTeamModelMode === 'premium' ? '#333' : 'transparent',
+                    border: '1px solid #333',
+                    borderRadius: '8px',
+                    padding: '8px 12px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    fontSize: '0.875rem',
-                    fontWeight: '500'
+                    transition: 'background-color 0.2s ease-in-out',
+                    color: devTeamModelMode === 'premium' ? 'white' : '#666',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
                   }}
-                  onMouseEnter={(e) => {
-                    if (devTeamModelMode !== 'premium') {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                      e.currentTarget.style.color = '#aaa';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (devTeamModelMode !== 'premium') {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#666';
-                    }
-                  }}
+                  aria-label="Switch to Premium model"
                 >
-                  PREMIUM
+                  Premium
                 </button>
               </div>
             </div>
@@ -867,6 +861,7 @@ const App: React.FC = () => {
                         onStop={() => handleSend()}
                         hasTasks={taskQueue.length > 0}
                         isProcessing={devTeamProcessing}
+                        onPromptSelect={setDevTeamPrompt}
                       />
                     </div>
                   </InputContainer>
